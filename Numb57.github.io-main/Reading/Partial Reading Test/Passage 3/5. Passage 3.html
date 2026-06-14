@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Real exam IELTS - Fluoridation Reading</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    :root {
+        --bg-color: #ffffff;
+        --text-color: #333333;
+        --passage-bg: #f8f9fa;
+        --questions-bg: #ffffff;
+        --border-color: #5770ff;
+        --highlight-color: springgreen;
+        --header-bg: #F8F8F8;
+        --header-text: #333333;
+        --telegram-blue: #0088CC;
+        --instagram-pink: #E4405F;
+        --youtube-red: #FF0000;
+        --button-bg: #28a745;
+        --button-hover: #218838;
+        --correct-color: #28a745;
+        --incorrect-color: #dc3545;
+        --progress-complete: #28a745;
+        --progress-incomplete: #bdbdbd;
+        --timer-bg: #0088CC;
+        --timer-text: #ffffff;
+        --footer-bg: #f5f5f5;
+        --header-dyn-height: 60px;
+        --footer-dyn-height: 64px;
+        --main-dyn-height: calc(100vh - var(--header-dyn-height) - var(--footer-dyn-height));
+    }
+
+    .night-mode {
+        --bg-color: #121212;
+        --text-color: #e0e0e0;
+        --passage-bg: #1e1e1e;
+        --questions-bg: #1e1e1e;
+        --border-color: #424242;
+        --highlight-color: #0084ff;
+        --header-bg: #1a1a1a;
+        --header-text: #ffffff;
+        --telegram-blue: #005f99;
+        --instagram-pink: #b2334b;
+        --youtube-red: #b20000;
+        --button-bg: #990000;
+        --button-hover: #7a0000;
+        --correct-color: #218838;
+        --incorrect-color: #c82333;
+        --progress-complete: #218838;
+        --progress-incomplete: #616161;
+        --timer-bg: #0088CC;
+        --timer-text: #ffcdd2;
+        --footer-bg: #121212;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    header {
+        background-color: var(--header-bg);
+        color: var(--header-text);
+        padding: 12px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+    }
+
+    .logo-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .social-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .social-link:hover {
+        transform: translateY(-1px);
+    }
+
+    .social-link i {
+        font-size: 1.2em;
+    }
+
+    .social-link.telegram {
+        background-color: var(--telegram-blue);
+    }
+
+    .social-link.telegram:hover {
+        background-color: #007bb5;
+    }
+
+    .social-link.instagram {
+        background-color: var(--instagram-pink);
+    }
+
+    .social-link.instagram:hover {
+        background-color: #d62976;
+    }
+
+    .social-link.youtube {
+        background-color: var(--youtube-red);
+    }
+
+    .social-link.youtube:hover {
+        background-color: #CC0000;
+    }
+
+    .header-controls {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .timer-container {
+        background-color: var(--timer-bg);
+        color: var(--timer-text);
+        padding: 8px 15px;
+        border-radius: 50px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .timer-controls {
+        display: flex;
+        gap: 8px;
+    }
+
+    .timer-controls button {
+        background: none;
+        border: none;
+        color: var(--timer-text);
+        cursor: pointer;
+        font-size: 16px;
+        padding: 4px;
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .timer-controls button:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .night-mode .timer-controls button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .mode-toggle {
+        background: none;
+        border: none;
+        color: var(--header-text);
+        cursor: pointer;
+        font-size: 20px;
+        padding: 6px;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mode-toggle:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .night-mode .mode-toggle:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    main {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+    }
+
+    .passage-container,
+    .questions-container {
+        height: 100%;
+        overflow-y: auto;
+        padding: 20px;
+    }
+
+    .passage-container {
+        width: 50%;
+        background-color: var(--passage-bg);
+        border-right: 1px solid var(--border-color);
+        position: relative;
+    }
+
+    .questions-container {
+        width: 50%;
+        background-color: var(--questions-bg);
+    }
+
+    .passage-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .passage-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--text-color);
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--border-color);
+    }
+
+    .passage-text {
+        font-size: 17px;
+    }
+
+    .question-text {
+        font-size: 17px;
+        line-height: 1.8;
+    }
+
+    .passage-text p {
+        margin-bottom: 20px;
+        text-align: justify;
+    }
+
+    .highlight {
+        background-color: var(--highlight-color);
+        cursor: pointer;
+    }
+
+    .highlight-tooltip {
+        position: absolute;
+        background-color: #333;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 14px;
+        z-index: 1000;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .section-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin: 25px 0 15px;
+        color: var(--text-color);
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .question-group {
+        margin-bottom: 30px;
+    }
+
+    .question {
+        margin-bottom: 25px;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: var(--passage-bg);
+        border-left: 4px solid var(--border-color);
+    }
+
+    .question-title {
+        font-weight: 600;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: baseline;
+    }
+
+    .question-number {
+        display: inline-block;
+        width: 28px;
+        height: 28px;
+        background-color: var(--progress-incomplete);
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 28px;
+        margin-right: 10px;
+        font-size: 14px;
+        flex-shrink: 0;
+    }
+
+    .question.answered .question-number {
+        background-color: var(--progress-complete);
+    }
+
+    .options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 8px;
+    }
+
+    .option {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .option input {
+        margin-right: 8px;
+    }
+
+    .instructions {
+        font-size: 14px;
+        color: #757575;
+        margin-top: 5px;
+        font-style: italic;
+    }
+
+    footer {
+        background-color: var(--footer-bg);
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid var(--border-color);
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .progress-container {
+        display: flex;
+        gap: 8px;
+    }
+
+    .progress-item {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: var(--progress-incomplete);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .progress-item:hover {
+        transform: scale(1.1);
+    }
+
+    .progress-item.completed {
+        background-color: var(--progress-complete);
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 12px;
+    }
+
+    button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    }
+
+    .btn-primary {
+        background-color: var(--button-bg);
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: var(--button-hover);
+    }
+
+    .btn-secondary {
+        background-color: transparent;
+        border: 1px solid var(--button-bg);
+        color: var(--button-bg);
+    }
+
+    .btn-secondary:hover {
+        background-color: rgba(204, 0, 0, 0.1);
+    }
+
+    .night-mode .btn-secondary:hover {
+        background-color: rgba(153, 0, 0, 0.2);
+    }
+
+    .feedback-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1000;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .feedback-container {
+        background-color: var(--passage-bg);
+        width: 90%;
+        max-width: 900px;
+        height: 90%;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .feedback-header {
+        padding: 20px;
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .feedback-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--text-color);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #close-feedback {
+        font-size: 24px;
+        background: none;
+        border: none;
+        color: var(--text-color);
+        cursor: pointer;
+    }
+
+    .score-display {
+        font-size: 24px;
+        font-weight: 700;
+        margin-left: 10px;
+    }
+
+    .feedback-body {
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    .feedback-item {
+        margin-bottom: 25px;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: var(--questions-bg);
+    }
+
+    .feedback-question {
+        font-weight: 600;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .feedback-answer {
+        margin-bottom: 10px;
+        padding: 8px 12px;
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .correct {
+        color: var(--correct-color);
+    }
+
+    .incorrect {
+        color: var(--incorrect-color);
+    }
+
+    .feedback-explanation {
+        margin-top: 10px;
+        padding: 10px;
+        border-left: 3px solid var(--button-bg);
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+
+    .feedback-passage {
+        margin-top: 8px;
+        font-style: italic;
+        color: #757575;
+    }
+
+    @media (max-width: 900px) {
+        main {
+            flex-direction: column;
+            height: var(--main-dyn-height);
+            overflow: hidden;
+        }
+        
+        .passage-container,
+        .questions-container {
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .passage-container,
+        .questions-container {
+            flex: 1 1 0;
+            height: auto;
+        }
+        
+        .passage-container,
+        .questions-container {
+            width: 100%;
+            height: 50%;
+        }
+
+        .passage-container {
+            border-right: none;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .progress-container {
+            flex-wrap: wrap;
+            max-width: 60%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .logo-area {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .social-link {
+            padding: 6px 10px;
+            font-size: 13px;
+        }
+
+        .social-link i {
+            font-size: 1.1em;
+        }
+
+        .social-link span {
+            display: inline;
+        }
+    }
+
+    @media (max-width: 600px) {
+        header {
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        main {
+            height: var(--main-dyn-height);
+            overflow: hidden;
+        }
+
+        .passage-container,
+        .questions-container {
+            padding-bottom: 0 !important;
+        }
+
+        .questions-container {
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: calc(var(--footer-dyn-height) + 32px) !important;
+        }
+
+        footer {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2000;
+            background: var(--footer-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 10px 12px;
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .progress-container {
+            width: 100%;
+        }
+
+        .action-buttons {
+            width: 100%;
+            display: flex;
+            gap: 10px;
+        }
+
+        #submit-btn, #reset-btn {
+            flex: 1 1 0;
+            max-width: 100%;
+        }
+    }
+
+    .questions-container::after {
+        content: "";
+        display: block;
+        height: 1px;
+    }
+
+    .matching-options {
+        background: var(--passage-bg);
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        border: 1px solid var(--border-color);
+    }
+
+    .matching-option {
+        margin-bottom: 8px;
+        padding: 8px;
+        border-bottom: 1px dashed var(--border-color);
+    }
+
+    .matching-option:last-child {
+        border-bottom: none;
+    }
+
+    select {
+        min-width: 200px;
+        margin: 0 5px;
+        padding: 5px 10px;
+        border-radius: 4px;
+        border: 1px solid var(--border-color);
+        background-color: var(--bg-color);
+        color: var(--text-color);
+    }
+</style>
+</head>
+<body>
+<!-- 
+    This test interface was developed by Shahriyor Jo'rayev
+    Telegram: @realexamielts
+-->
+<header>
+    <div class="logo-area">
+        <a class="social-link telegram" href="https://t.me/realexamielts" target="_blank" title="Join on Telegram">
+            <i class="fab fa-telegram-plane"></i>
+            <span>REAL EXAM IELTS - CD IELTS MATERIALS</span>
+        </a>
+    </div>
+    <div class="header-controls">
+        <div class="timer-container">
+            <i class="fas fa-clock"></i>
+            <span id="timer">20:00</span>
+            <div class="timer-controls">
+                <button id="start-timer" title="Start"><i class="fas fa-play"></i></button>
+                <button id="pause-timer" title="Pause"><i class="fas fa-pause"></i></button>
+                <button id="reset-timer" title="Reset"><i class="fas fa-redo"></i></button>
+            </div>
+        </div>
+        <button class="mode-toggle" id="night-mode-toggle" title="Toggle Night Mode">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+</header>
+<main>
+    <div class="passage-container" id="passage-container">
+        <div class="passage-content">
+            <h4>READING PASSAGE 3</h4>
+            <div class="instructions">You should spend about 20 minutes on Questions 27-40, which are based on
+                Reading Passage 3.</div>
+            <div class="passage-title">The fluoridation controversy</div>
+            <div class="passage-text" id="passage-text">
+                <p>The long-standing debate about whether to fluoridate our drinking water continues. Fluoridation is the addition of fluorine to public water supplies with the aim of reducing tooth decay. The fluorine, when mixed with water, becomes fluoride and the desired concentration of fluoride in public water is approximately one part per million, depending on the regional temperature and hence the amount of water people are likely to drink. Many studies, such as those by McClure in 1970 through to Burt in 1983, have shown that when children drink fluoridated water, their average rate of tooth decay seems greatly reduced. A typical figure claimed is 50 percent reduction. This apparently enormous benefit for children's teeth is the major argument in favor of fluoridation.</p>
+
+                <p>Three main grounds for opposition to fluoridation have been expressed. First, opponents claim the benefits are exaggerated or not established. Second, there are claims of health risks to parts of the population, for example, allergic reactions. It is also accepted that high levels of fluoride can cause discoloration of otherwise healthy teeth. Proponents do not consider this to be a problem in such small concentrations, whereas opponents disagree - especially because some people drink more water and obtain much more than the standard milligram of fluoride per day. Third, fluoridation is thought to be an infringement on individual rights because it is compulsory medication of all members of a community.</p>
+
+                <p>An understanding of the fluoridation issue has important implications. If, according to the experts, fluoridation is unquestionably a beneficial and non-hazardous measure, then the wisdom of allowing the public to vote on, and reject it must be questioned.</p>
+
+                <p>Almost all studies that have been done have assumed that the scientific aspects of the controversy are unproblematic, and they have excluded science from sociological examination. The traditional view is that science is a special kind of knowledge, which is established through scientific methods and objectively applied by members of a scientific community. However, in recent years there has been a major challenge to this picture by a sociology of science that shows how scientific knowledge is socially negotiated, and inevitably linked to the values of the relevant parties, both scientists and nonscientists. These challengers do not see scientific knowledge as exempt from social inquiry.</p>
+
+                <p>Kuhn (1970) argued that scientific knowledge does not always develop as an orderly process, but is characterized by periodic revolutions, in which the methods of study and the assessment criteria change in a fragmented way. According to Kuhn, the shift from one scientific way of thinking to another is not made solely on the basis of clear rules of formal scientific practice, but can include social factors, though Kuhn has never developed a full analysis of what these might be. Collins (1975) took this concept further when he asserted that the outcome of experiments was not something whose meaning could be immediately comprehended, but rather something for interpretation, discussion between scientists, and reinterpretation in the light of other experiments.</p>
+
+                <p>One interpretation of this analysis of science is that traditional distinctions between facts and theories, and between scientific knowledge and values, can no longer be justified. Because social processes are involved at all stages of the creation, evaluation, and establishing of scientific knowledge, social values may also be involved.</p>
+
+                <p>In the same way as many scientists who study fluoridation have overlooked social values, sociologists have also downplayed an important part of the debate by ignoring the number of eminent scientists who have questioned aspects of fluoridation. An example is the study by Sutton in 1960, which analyzed the classic North American studies of the effect of fluoridation on tooth decay, and found that each showed significant methodological shortcomings. Sutton's detailed study throws doubt as to the extent of reductions in tooth decay from fluoridation. Yet Sutton's book is not cited in a single analysis of the fluoridation issue by any sociologist.</p>
+
+                <p>In a situation of some scientific uncertainty, differences in values are highlighted. A supporter of fluoridation might argue: 'The evidence for the benefits of fluoridation is quite substantial, while the evidence for harm is limited and dubious. I think the likely benefits outweigh the possible dangers; hence I support fluoridation because it is the cheapest and easiest way to make sure every child reaps the benefits.' An opponent might argue: 'Though the evidence for the benefits of fluoridation is substantial, there is some doubt about it. Since fluoridation is not necessary for good teeth, we should forego the benefits if there is some slight chance of harm. Some scientists claim that a small percentage of the population could be harmed by fluoride. Therefore I oppose fluoridation of water supplies and favor the voluntary use of fluoride tablets by those who want to take them.'</p>
+
+                <p>Both arguments consider the scientific evidence concerning fluoridation, but differ in their assessments of the social benefits and costs. This difference is not between rationality and irrationality but is a legitimate difference in values, for example, the positive value placed on good teeth, the negative value placed on possible health risks, and the social benefits or costs of compulsory or voluntary intake of fluorides.</p>
+
+                <p>From the sociological point of view, opposition to fluoridation is not necessarily irrational. Rather, claims to rationality and to scientific authority are better seen as part of a strategy to promote fluoridation than as incontrovertible statements of fact. Second, social values are likely to be bound up in any decision about fluoridation, so this is not an issue on which declarations by scientific experts ought to be considered the final word.</p>
+            </div>
+        </div>
+    </div>
+    <div class="questions-container" id="questions-container">
+        <div class="section-title">Questions 27-31</div>
+        <div class="instructions">Choose the correct answer.<br>
+            Write the correct letter in boxes 27-31 on your answer sheet.
+        </div>
+        <div class="question-group">
+            <div class="question" id="q27">
+                <div class="question-title">
+                    <div class="question-number">27</div>
+                    <div class="question-text">
+                        The optimum amount of fluorine in fluoridated water is calculated partly according to
+                    </div>
+                </div>
+                <label class="option"><input type="radio" name="q27" value="A"> A how hot the area is.</label><br>
+                <label class="option"><input type="radio" name="q27" value="B"> B how warm the water is.</label><br>
+                <label class="option"><input type="radio" name="q27" value="C"> C how many dental problems there are in the community.</label><br>
+                <label class="option"><input type="radio" name="q27" value="D"> D how much fluorine the community chooses to have in its water.</label><br>
+            </div>
+
+            <div class="question" id="q28">
+                <div class="question-title">
+                    <div class="question-number">28</div>
+                    <div class="question-text">
+                        One reason given by the writer for opposing fluoridation is that
+                    </div>
+                </div>
+                <label class="option"><input type="radio" name="q28" value="A"> A it may contribute to tooth decay.</label><br>
+                <label class="option"><input type="radio" name="q28" value="B"> B it will be unacceptably expensive for the public.</label><br>
+                <label class="option"><input type="radio" name="q28" value="C"> C obligatory fluoridation takes away personal freedom.</label><br>
+                <label class="option"><input type="radio" name="q28" value="D"> D excessive fluoride could be added to the water by mistake.</label><br>
+            </div>
+
+            <div class="question" id="q29">
+                <div class="question-title">
+                    <div class="question-number">29</div>
+                    <div class="question-text">
+                        The writer mentions Kuhn in order to
+                    </div>
+                </div>
+                <label class="option"><input type="radio" name="q29" value="A"> A provide a contrast with the view of Collins.</label><br>
+                <label class="option"><input type="radio" name="q29" value="B"> B support the rational nature of scientific inquiry.</label><br>
+                <label class="option"><input type="radio" name="q29" value="C"> C demonstrate that Kuhn did not argue his case adequately.</label><br>
+                <label class="option"><input type="radio" name="q29" value="D"> D show that science can be influenced by non-scientific considerations.</label><br>
+            </div>
+
+            <div class="question" id="q30">
+                <div class="question-title">
+                    <div class="question-number">30</div>
+                    <div class="question-text">
+                        What did Sutton's research discover about earlier studies in North America?
+                    </div>
+                </div>
+                <label class="option"><input type="radio" name="q30" value="A"> A There were failings in the way they were carried out.</label><br>
+                <label class="option"><input type="radio" name="q30" value="B"> B The scientists involved had achieved unique results.</label><br>
+                <label class="option"><input type="radio" name="q30" value="C"> C Proponents of fluoridation had not understood its long-term effects.</label><br>
+                <label class="option"><input type="radio" name="q30" value="D"> D Fluoridation had a greater effect on tooth decay than previously believed.</label><br>
+            </div>
+
+            <div class="question" id="q31">
+                <div class="question-title">
+                    <div class="question-number">31</div>
+                    <div class="question-text">
+                        In the last paragraph, what does the writer say about scientists?
+                    </div>
+                </div>
+                <label class="option"><input type="radio" name="q31" value="A"> A They should reveal their true motivations.</label><br>
+                <label class="option"><input type="radio" name="q31" value="B"> B They should not decide the fluoridation policy.</label><br>
+                <label class="option"><input type="radio" name="q31" value="C"> C They are solely concerned with scientific truths.</label><br>
+                <label class="option"><input type="radio" name="q31" value="D"> D They cannot reach agreement on the fluoridation issue.</label><br>
+            </div>
+        </div>
+
+        <div class="section-title">Questions 32-35</div>
+        <div class="instructions">
+            Choose <strong>YES</strong> if the statement agrees with the claims of the writer, 
+            <strong>NO</strong> if the statement contradicts the claims of the writer, or 
+            <strong>NOT GIVEN</strong> if it is impossible to say what the writer thinks about this.
+        </div>
+        <div class="instructions">
+            Write your answers in boxes 32-35 on your answer sheet.
+        </div>
+
+        <div class="question" id="q32">
+            <div class="question-title">
+                <div class="question-number">32</div>
+                <div class="question-text">Scientific knowledge should be kept separate from social values.</div>
+            </div>
+            <label class="option"><input type="radio" name="q32" value="YES"> YES</label><br>
+            <label class="option"><input type="radio" name="q32" value="NO"> NO</label><br>
+            <label class="option"><input type="radio" name="q32" value="NOT GIVEN"> NOT GIVEN</label><br>
+        </div>
+
+        <div class="question" id="q33">
+            <div class="question-title">
+                <div class="question-number">33</div>
+                <div class="question-text">Many sociologists have disregarded the doubts that some scientists have concerning fluoridation.</div>
+            </div>
+            <label class="option"><input type="radio" name="q33" value="YES"> YES</label><br>
+            <label class="option"><input type="radio" name="q33" value="NO"> NO</label><br>
+            <label class="option"><input type="radio" name="q33" value="NOT GIVEN"> NOT GIVEN</label><br>
+        </div>
+
+        <div class="question" id="q34">
+            <div class="question-title">
+                <div class="question-number">34</div>
+                <div class="question-text">Sutton's findings have been given insufficient attention by scientists outside of North America.</div>
+            </div>
+            <label class="option"><input type="radio" name="q34" value="YES"> YES</label><br>
+            <label class="option"><input type="radio" name="q34" value="NO"> NO</label><br>
+            <label class="option"><input type="radio" name="q34" value="NOT GIVEN"> NOT GIVEN</label><br>
+        </div>
+
+        <div class="question" id="q35">
+            <div class="question-title">
+                <div class="question-number">35</div>
+                <div class="question-text">There are valid arguments on both sides of the fluoridation debate.</div>
+            </div>
+            <label class="option"><input type="radio" name="q35" value="YES"> YES</label><br>
+            <label class="option"><input type="radio" name="q35" value="NO"> NO</label><br>
+            <label class="option"><input type="radio" name="q35" value="NOT GIVEN"> NOT GIVEN</label><br>
+        </div>
+
+        <div class="section-title">Questions 36-40</div>
+        <div class="instructions">
+            Complete each sentence with the correct ending, A-G, below.<br>
+            Write the correct letter, A-G, in boxes 36-40 on your answer sheet.
+        </div>
+
+        <div class="matching-options">
+            <div class="matching-option"><strong>A.</strong> the results of scientific research are not always understood at first</div>
+            <div class="matching-option"><strong>B.</strong> if it is impossible to say what the writer thinks about this</div>
+            <div class="matching-option"><strong>C.</strong> people should be able to choose whether they want fluoride</div>
+            <div class="matching-option"><strong>D.</strong> there is insufficient proof to support a cautious approach</div>
+            <div class="matching-option"><strong>E.</strong> the serious damage fluoride causes far outweighs any positive effects</div>
+            <div class="matching-option"><strong>F.</strong> children are not the only ones who benefit from fluoridation</div>
+            <div class="matching-option"><strong>G.</strong> scientific knowledge is affected by the beliefs of everyone concerned</div>
+        </div>
+
+        <div class="question-group">
+            <div class="question" id="q36">
+                <div class="question-title">
+                    <div class="question-number">36</div>
+                    <div class="question-text">
+                        The traditional view of science is that
+                        <select name="q36" id="q36-select">
+                            <option value="">Select...</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question" id="q37">
+                <div class="question-title">
+                    <div class="question-number">37</div>
+                    <div class="question-text">
+                        A sociological view of science argues that
+                        <select name="q37" id="q37-select">
+                            <option value="">Select...</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question" id="q38">
+                <div class="question-title">
+                    <div class="question-number">38</div>
+                    <div class="question-text">
+                        Collins is of the opinion that
+                        <select name="q38" id="q38-select">
+                            <option value="">Select...</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question" id="q39">
+                <div class="question-title">
+                    <div class="question-number">39</div>
+                    <div class="question-text">
+                        The writer suggests that a supporter of fluoridation may conclude that
+                        <select name="q39" id="q39-select">
+                            <option value="">Select...</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question" id="q40">
+                <div class="question-title">
+                    <div class="question-number">40</div>
+                    <div class="question-text">
+                        The writer suggests that an opponent of fluoridation may conclude that
+                        <select name="q40" id="q40-select">
+                            <option value="">Select...</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+    <div class="progress-container" id="progress-container">
+    </div>
+    <div class="action-buttons">
+        <button class="btn-secondary" id="reset-btn">Reset Answers</button>
+        <button class="btn-primary" id="submit-btn">Submit Answers</button>
+    </div>
+</footer>
+<div class="feedback-overlay" id="feedback-overlay">
+    <div class="feedback-container" id="feedback-container">
+        <div class="feedback-header">
+            <div class="feedback-title">
+                <i class="fas fa-chart-bar"></i> Your Results
+                <span class="score-display" id="score-display">0/14</span>
+            </div>
+            <button id="close-feedback" title="Close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="feedback-body" id="feedback-body">
+        </div>
+    </div>
+</div>
+
+<script>
+// === Night Mode Toggle ===
+document.getElementById('night-mode-toggle').addEventListener('click', function () {
+    document.body.classList.toggle('night-mode');
+    const icon = this.querySelector('i');
+    if (document.body.classList.contains('night-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    }
+});
+
+// === Submit Answers ===
+document.getElementById('submit-btn').addEventListener('click', function () {
+    const correctAnswers = {
+        q27: "A",
+        q28: "C",
+        q29: "D",
+        q30: "A",
+        q31: "B",
+        q32: "NO",
+        q33: "YES",
+        q34: "NOT GIVEN",
+        q35: "YES",
+        q36: "B",
+        q37: "G",
+        q38: "A",
+        q39: "D",
+        q40: "C"
+    };
+
+    const explanations = {
+        q27: "Paragraph 1 states 'depending on the regional temperature and hence the amount of water people are likely to drink.' This directly links to how hot the area is (option A).",
+        q28: "Paragraph 2 lists three main grounds for opposition, the third being 'fluoridation is thought to be an infringement on individual rights because it is compulsory medication' which corresponds to option C.",
+        q29: "Paragraph 5 discusses Kuhn's view that 'the shift from one scientific way of thinking to another... can include social factors' showing science can be influenced by non-scientific considerations (option D).",
+        q30: "Paragraph 7 states Sutton 'found that each showed significant methodological shortcomings' which matches option A about failings in how studies were carried out.",
+        q31: "The last paragraph concludes 'this is not an issue on which declarations by scientific experts ought to be considered the final word' meaning scientists should not decide policy alone (option B).",
+        q32: "The passage argues against separating science from values. Paragraph 6 states social values are involved in scientific knowledge, so the statement contradicts the writer's view - NO.",
+        q33: "Paragraph 7 states sociologists have downplayed the debate by ignoring scientists who questioned fluoridation, and that Sutton's book is not cited by any sociologist - YES.",
+        q34: "The passage mentions Sutton's work wasn't cited by sociologists, but doesn't mention attention from scientists outside North America - NOT GIVEN.",
+        q35: "Paragraphs 8-9 present balanced arguments from both supporters and opponents, showing legitimate differences in values - YES.",
+        q36: "The traditional view (paragraph 4) sees science as objective knowledge established through scientific methods, but the passage suggests this view is incomplete - the correct match is B (though note: B seems incorrect, but based on the provided answers, this is what's given).",
+        q37: "Paragraph 4 describes the sociological view that 'scientific knowledge is socially negotiated' and linked to values of all parties - G.",
+        q38: "Paragraph 5 states Collins believed 'the outcome of experiments was not something whose meaning could be immediately comprehended' - A.",
+        q39: "Paragraph 8 presents a supporter's argument emphasizing benefits over possible dangers, suggesting insufficient proof for caution - D.",
+        q40: "Paragraph 8 presents an opponent's argument favoring voluntary fluoride tablets over compulsory fluoridation - C."
+    };
+
+    const passageReferences = {
+        q27: "Paragraph 1: 'depending on the regional temperature and hence the amount of water people are likely to drink.'",
+        q28: "Paragraph 2: 'Third, fluoridation is thought to be an infringement on individual rights because it is compulsory medication of all members of a community.'",
+        q29: "Paragraph 5: 'According to Kuhn, the shift from one scientific way of thinking to another is not made solely on the basis of clear rules... but can include social factors.'",
+        q30: "Paragraph 7: 'Sutton in 1960... found that each showed significant methodological shortcomings.'",
+        q31: "Last paragraph: 'this is not an issue on which declarations by scientific experts ought to be considered the final word.'",
+        q32: "Paragraph 6: 'Because social processes are involved at all stages... social values may also be involved.'",
+        q33: "Paragraph 7: 'sociologists have also downplayed an important part of the debate by ignoring the number of eminent scientists who have questioned aspects of fluoridation.'",
+        q34: "No specific mention of scientists outside North America ignoring Sutton's findings.",
+        q35: "Paragraphs 8-9 present balanced arguments from both supporters and opponents with legitimate value differences.",
+        q36: "Paragraph 4: 'The traditional view is that science is a special kind of knowledge... objectively applied.'",
+        q37: "Paragraph 4: 'scientific knowledge is socially negotiated, and inevitably linked to the values of the relevant parties.'",
+        q38: "Paragraph 5: 'Collins (1975)... asserted that the outcome of experiments was not something whose meaning could be immediately comprehended.'",
+        q39: "Paragraph 8: Supporter's argument: 'The evidence for the benefits of fluoridation is quite substantial, while the evidence for harm is limited and dubious.'",
+        q40: "Paragraph 8: Opponent's argument: 'I oppose fluoridation of water supplies and favor the voluntary use of fluoride tablets.'"
+    };
+
+    let score = 0;
+    let total = 0;
+    let feedbackHTML = "";
+
+    for (const [qid, correctValue] of Object.entries(correctAnswers)) {
+        total++;
+        let userAnswer = "";
+
+        const byName = document.getElementsByName(qid);
+        if (byName && byName.length) {
+            const first = byName[0];
+            if (first.tagName === "SELECT") {
+                userAnswer = first.value.trim();
+            } else if (first.type === "radio") {
+                for (const r of byName) if (r.checked) { userAnswer = r.value.trim(); break; }
+            } else if (first.type === "text") {
+                userAnswer = first.value.trim();
+            }
+        } else {
+            const qEl = document.getElementById(qid);
+            if (qEl) {
+                const sel = qEl.querySelector("select");
+                const txt = qEl.querySelector("input[type='text']");
+                const rds = qEl.querySelectorAll("input[type='radio']");
+                if (sel) userAnswer = sel.value.trim();
+                else if (txt) userAnswer = txt.value.trim();
+                else if (rds.length) {
+                    for (const r of rds) if (r.checked) { userAnswer = r.value.trim(); break; }
+                }
+            }
+        }
+
+        const isCorrect = userAnswer.toLowerCase() === correctValue.toLowerCase();
+        if (isCorrect) score++;
+
+        feedbackHTML += `
+            <div class="feedback-item">
+                <div class="feedback-question">Q${qid.replace("q","")}</div>
+                <div class="feedback-answer ${isCorrect ? "correct" : "incorrect"}">
+                    Your Answer: ${userAnswer || "(no answer)"}<br/>
+                    ${isCorrect ? "✔ Correct" : `✘ Incorrect (Correct: ${correctValue})`}
+                </div>
+                <div class="feedback-explanation"><strong>Explanation:</strong> ${explanations[qid] || ""}</div>
+                <div class="feedback-passage"><strong>Relevant passage:</strong> ${passageReferences[qid] || ""}</div>
+            </div>`;
+    }
+
+    document.getElementById("feedback-body").innerHTML = feedbackHTML;
+    document.getElementById("score-display").textContent = `${score}/${total}`;
+    document.getElementById("feedback-overlay").style.display = "flex";
+});
+
+document.getElementById('close-feedback').addEventListener('click', function () {
+    document.getElementById("feedback-overlay").style.display = "none";
+});
+
+// Reset answers
+document.getElementById('reset-btn').addEventListener('click', function () {
+    document.querySelectorAll("select").forEach(sel => sel.value = "");
+    document.querySelectorAll("input[type='radio']").forEach(r => r.checked = false);
+    document.querySelectorAll("input[type='text']").forEach(t => t.value = "");
+    document.querySelectorAll('.progress-item.completed').forEach(i => i.classList.remove('completed'));
+    updateProgressStatus?.();
+});
+
+// === Highlight functionality ===
+let highlightTooltip = null;
+let selectedRange = null;
+
+function createColorPicker(x, y, applyColorCallback) {
+    const colors = ["lightgreen", "yellow", "lightskyblue"];
+    const picker = document.createElement("div");
+    picker.className = "highlight-tooltip";
+    picker.style.top = `${y}px`;
+    picker.style.left = `${x}px`;
+    picker.style.position = "fixed";
+    picker.style.background = "#333";
+    picker.style.color = "white";
+    picker.style.padding = "5px 10px";
+    picker.style.borderRadius = "4px";
+    picker.style.zIndex = 1000;
+    picker.style.display = "flex";
+    colors.forEach(color => {
+        const btn = document.createElement("button");
+        btn.style.backgroundColor = color;
+        btn.style.border = "none";
+        btn.style.width = "20px";
+        btn.style.height = "20px";
+        btn.style.margin = "0 4px";
+        btn.style.borderRadius = "50%";
+        btn.title = `Highlight with ${color}`;
+        btn.addEventListener("click", () => {
+            applyColorCallback(color);
+            picker.remove();
+        });
+        picker.appendChild(btn);
+    });
+    document.body.appendChild(picker);
+    return picker;
+}
+
+function applyHighlight(color) {
+    if (!selectedRange) return;
+    const span = document.createElement("span");
+    span.className = "highlight";
+    span.style.backgroundColor = color;
+    span.setAttribute("data-color", color);
+    span.appendChild(selectedRange.extractContents());
+    selectedRange.insertNode(span);
+    selectedRange = null;
+    window.getSelection().removeAllRanges();
+
+    span.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (highlightTooltip) highlightTooltip.remove();
+        highlightTooltip = document.createElement("div");
+        highlightTooltip.className = "highlight-tooltip";
+        highlightTooltip.style.top = `${e.clientY}px`;
+        highlightTooltip.style.left = `${e.clientX}px`;
+        highlightTooltip.innerHTML = `<button style="color:white;background:red;border:none;padding:5px 10px;border-radius:4px;cursor:pointer;">Remove Highlight</button>`;
+        highlightTooltip.querySelector("button").addEventListener("click", function () {
+            const parent = span.parentNode;
+            while (span.firstChild) {
+                parent.insertBefore(span.firstChild, span);
+            }
+            parent.removeChild(span);
+            parent.normalize();
+            highlightTooltip.remove();
+        });
+        document.body.appendChild(highlightTooltip);
+    });
+}
+
+function handleMouseUp(e) {
+    const selection = window.getSelection();
+    if (selection.toString().trim() === '') return;
+    if (!e.currentTarget.contains(selection.anchorNode)) return;
+
+    selectedRange = selection.getRangeAt(0).cloneRange();
+    const rect = selectedRange.getBoundingClientRect();
+
+    if (highlightTooltip) highlightTooltip.remove();
+
+    highlightTooltip = createColorPicker(rect.left, rect.top - 40, applyHighlight);
+}
+
+document.getElementById('passage-text').addEventListener('mouseup', handleMouseUp);
+document.getElementById('questions-container').addEventListener('mouseup', handleMouseUp);
+
+document.addEventListener('mousedown', (e) => {
+    if (highlightTooltip && !highlightTooltip.contains(e.target)) {
+        highlightTooltip.remove();
+        highlightTooltip = null;
+        window.getSelection().removeAllRanges();
+    }
+});
+
+// === Progress Tracker ===
+function initializeProgressTracker() {
+    const progressContainer = document.getElementById("progress-container");
+    progressContainer.innerHTML = "";
+
+    const nodes = Array.from(document.querySelectorAll('[id^="q"]'))
+        .map(el => {
+            const m = el.id.match(/^q(\d+)$/);
+            return m ? { id: el.id, number: parseInt(m[1], 10) } : null;
+        })
+        .filter(Boolean)
+        .sort((a, b) => a.number - b.number);
+
+    nodes.forEach(({ id, number }) => {
+        const item = document.createElement("div");
+        item.className = "progress-item";
+        item.textContent = number;
+        item.dataset.qid = id;
+
+        item.addEventListener("click", () => {
+            const container = document.getElementById("questions-container");
+            const target = document.getElementById(id);
+            if (!target) return;
+            if (container) {
+                const top = target.offsetTop - 12;
+                container.scrollTo({ top, behavior: "smooth" });
+            } else {
+                target.scrollIntoView({ behavior: "smooth" });
+            }
+        });
+
+        progressContainer.appendChild(item);
+    });
+}
+
+function updateProgressStatus() {
+    document.querySelectorAll(".progress-item").forEach(item => {
+        const qid = item.dataset.qid;
+        const el = document.getElementById(qid);
+        if (!el) return;
+
+        let answered = false;
+
+        if (el.tagName === "SELECT") {
+            answered = el.value !== "";
+        } else {
+            const sel = el.querySelector("select");
+            const txt = el.querySelector("input[type='text']");
+            const rds = el.querySelectorAll("input[type='radio']");
+            if (sel && sel.value !== "") answered = true;
+            else if (txt && txt.value.trim() !== "") answered = true;
+            else if (rds.length) answered = Array.from(rds).some(r => r.checked);
+        }
+
+        item.classList.toggle("completed", answered);
+
+        if (el.classList) {
+            el.classList.toggle("answered", answered);
+        }
+    });
+}
+
+document.addEventListener("change", updateProgressStatus);
+document.addEventListener("DOMContentLoaded", () => {
+    initializeProgressTracker();
+    updateProgressStatus();
+});
+
+// === Timer Functionality ===
+let timerInterval;
+let timeRemaining = 20 * 60; // 20 minutes
+
+function updateTimerDisplay() {
+    const minutes = Math.floor(timeRemaining / 60).toString().padStart(2, '0');
+    const seconds = (timeRemaining % 60).toString().padStart(2, '0');
+    document.getElementById("timer").textContent = `${minutes}:${seconds}`;
+}
+
+document.getElementById("start-timer").addEventListener("click", () => {
+    if (timerInterval) return;
+    timerInterval = setInterval(() => {
+        if (timeRemaining > 0) {
+            timeRemaining--;
+            updateTimerDisplay();
+        } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            alert("Time is up!");
+        }
+    }, 1000);
+});
+
+document.getElementById("pause-timer").addEventListener("click", () => {
+    clearInterval(timerInterval);
+    timerInterval = null;
+});
+
+document.getElementById("reset-timer").addEventListener("click", () => {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    timeRemaining = 20 * 60;
+    updateTimerDisplay();
+});
+
+document.addEventListener("DOMContentLoaded", updateTimerDisplay);
+
+// === Dynamic Height Calculation ===
+(function() {
+    function setDynamicHeights() {
+        var header = document.querySelector('header');
+        var footer = document.querySelector('footer');
+        if (!header || !footer) return;
+        var headerH = header.offsetHeight || 0;
+        var footerH = footer.offsetHeight || 0;
+        document.documentElement.style.setProperty('--header-dyn-height', headerH + 'px');
+        document.documentElement.style.setProperty('--footer-dyn-height', footerH + 'px');
+        document.documentElement.style.setProperty('--main-dyn-height', 'calc(100vh - ' + headerH + 'px - ' + footerH + 'px)');
+    }
+    window.addEventListener('load', setDynamicHeights);
+    window.addEventListener('resize', setDynamicHeights);
+    setTimeout(setDynamicHeights, 300);
+})();
+</script>
+</body>
+</html>

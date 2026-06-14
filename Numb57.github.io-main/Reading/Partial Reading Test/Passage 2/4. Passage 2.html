@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Real exam IELTS</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --passage-bg: #f8f9fa;
+            --questions-bg: #ffffff;
+            --border-color: #5770ff;
+            --highlight-color: springgreen;
+            /* Changed highlight color */
+
+            /* New Header & Social Colors */
+            --header-bg: #F8F8F8;
+            /* Very light gray for header background */
+            --header-text: #333333;
+            /* Dark text for light header */
+            --telegram-blue: #0088CC;
+            --instagram-pink: #E4405F;
+            --youtube-red: #FF0000;
+
+            /* Button Colors (Red themed) */
+            --button-bg: #28a745;
+            /* Primary button red */
+            --button-hover: #218838;
+            /* Darker red on hover */
+
+            --correct-color: #28a745;
+            /* Standard green */
+            --incorrect-color: #dc3545;
+            /* Standard red */
+            --progress-complete: #28a745;
+            --progress-incomplete: #bdbdbd;
+
+            /* Timer Colors (Red themed) */
+            --timer-bg: #0088CC;
+            /* Very light red/pink */
+            --timer-text: #ffffff;
+            /* Darker red */
+
+            --footer-bg: #f5f5f5;
+        }
+
+        .night-mode {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --passage-bg: #1e1e1e;
+            --questions-bg: #1e1e1e;
+            --border-color: #424242;
+            --highlight-color: #0084ff;
+            /* Darker springgreen for night mode */
+
+            /* Night Mode Header & Social Colors */
+            --header-bg: #1a1a1a;
+            /* Dark gray for header background */
+            --header-text: #ffffff;
+            /* White text for dark header */
+            --telegram-blue: #005f99;
+            /* Darker telegram blue */
+            --instagram-pink: #b2334b;
+            /* Darker instagram pink */
+            --youtube-red: #b20000;
+            /* Darker YouTube red */
+
+            /* Night Mode Button Colors */
+            --button-bg: #990000;
+            /* Darker primary button red */
+            --button-hover: #7a0000;
+            /* Even darker red on hover */
+
+            --correct-color: #218838;
+            /* Darker green */
+            --incorrect-color: #c82333;
+            /* Darker red */
+            --progress-complete: #218838;
+            --progress-incomplete: #616161;
+
+            /* Night Mode Timer Colors */
+            --timer-bg: #0088CC;
+            /* Dark red */
+            --timer-text: #ffcdd2;
+            /* Lighter red */
+
+            --footer-bg: #121212;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .logo-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            /* Space between social links */
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            /* Space between icon and text */
+            color: white;
+            /* Text color is always white for social links */
+            padding: 8px 15px;
+            border-radius: 50px;
+            /* Pill shape */
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-1px);
+        }
+
+        .social-link i {
+            font-size: 1.2em;
+            /* Makes icon slightly larger than text */
+        }
+
+        /* Specific styling for social links */
+        .social-link.telegram {
+            background-color: var(--telegram-blue);
+        }
+
+        .social-link.telegram:hover {
+            background-color: #007bb5;
+            /* Slightly darker */
+        }
+
+        .social-link.instagram {
+            background-color: var(--instagram-pink);
+        }
+
+        .social-link.instagram:hover {
+            background-color: #d62976;
+            /* Slightly darker */
+        }
+
+        .social-link.youtube {
+            background-color: var(--youtube-red);
+        }
+
+        .social-link.youtube:hover {
+            background-color: #CC0000;
+            /* Slightly darker */
+        }
+
+
+        .header-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .timer-container {
+            background-color: var(--timer-bg);
+            color: var(--timer-text);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timer-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .timer-controls button {
+            background: none;
+            border: none;
+            color: var(--timer-text);
+            cursor: pointer;
+            font-size: 16px;
+            padding: 4px;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timer-controls button:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            /* Darker hover for light timer */
+        }
+
+        .night-mode .timer-controls button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            /* Lighter hover for dark timer */
+        }
+
+        .mode-toggle {
+            background: none;
+            border: none;
+            color: var(--header-text);
+            cursor: pointer;
+            font-size: 20px;
+            padding: 6px;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mode-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            /* Darker hover for light header */
+        }
+
+        .night-mode .mode-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            /* Lighter hover for dark header */
+        }
+
+        main {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .passage-container,
+        .questions-container {
+            height: 100%;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .passage-container {
+            width: 50%;
+            background-color: var(--passage-bg);
+            border-right: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .questions-container {
+            width: 50%;
+            background-color: var(--questions-bg);
+        }
+
+        .passage-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .passage-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .passage-text {
+            font-size: 17px;
+        }
+
+        .question-text {
+            font-size: 17px;
+            line-height: 1.8;
+            /* Increased line-height for fill-in-the-blank */
+        }
+
+        .passage-text p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .highlight {
+            background-color: var(--highlight-color);
+            cursor: pointer;
+        }
+
+        .highlight-tooltip {
+            position: absolute;
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            z-index: 1000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 25px 0 15px;
+            color: var(--text-color);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .question-group {
+            margin-bottom: 30px;
+        }
+
+        .question {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--passage-bg);
+            border-left: 4px solid var(--border-color);
+        }
+
+        .question-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: baseline;
+            /* Align baselines of number and text */
+        }
+
+        .question-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background-color: var(--progress-incomplete);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            margin-right: 10px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .question.answered .question-number {
+            background-color: var(--progress-complete);
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .option input {
+            margin-right: 8px;
+        }
+
+        /* Styling for the new inline input fields */
+        .fill-in-the-blank {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--text-color);
+            width: 150px;
+            font-family: inherit;
+            font-size: 1em;
+            /* Inherit font size from parent */
+            color: inherit;
+            padding: 0 4px 2px 4px;
+            /* Add some padding */
+            margin: 0 3px;
+            /* Add some margin */
+            vertical-align: baseline;
+            /* Align with the text */
+            text-align: center;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .fill-in-the-blank:focus {
+            border-bottom-color: var(--button-bg);
+        }
+
+
+        .instructions {
+            font-size: 14px;
+            color: #757575;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .summary-box {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fafafa;
+            margin-top: 15px;
+        }
+
+        .summary-box p {
+            font-weight: normal !important;
+        }
+
+        .summary-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+
+        .summary-options span {
+            padding: 5px;
+        }
+
+        .summary-text {
+            line-height: 2.2;
+        }
+
+        .summary-text .gap {
+            display: inline-block;
+            width: 150px;
+        }
+
+        .summary-text .question-input {
+            width: 40px;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+        }        
+
+        footer {
+            background-color: var(--footer-bg);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-container {
+            display: flex;
+            gap: 8px;
+        }
+
+        .progress-item {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--progress-incomplete);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .progress-item:hover {
+            transform: scale(1.1);
+        }
+
+        .progress-item.completed {
+            background-color: var(--progress-complete);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--button-bg);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--button-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--button-bg);
+            /* Use primary button color for border */
+            color: var(--button-bg);
+            /* Use primary button color for text */
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(204, 0, 0, 0.1);
+            /* Light red tint on hover */
+        }
+
+        .night-mode .btn-secondary:hover {
+            background-color: rgba(153, 0, 0, 0.2);
+            /* Darker red tint on hover for night mode */
+        }
+
+
+        .feedback-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            display: none;
+            /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .feedback-container {
+            background-color: var(--passage-bg);
+            width: 90%;
+            max-width: 900px;
+            height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feedback-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .feedback-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #close-feedback {
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        .score-display {
+            font-size: 24px;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+
+        .feedback-body {
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .feedback-item {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--questions-bg);
+        }
+
+        .feedback-question {
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback-answer {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .correct {
+            color: var(--correct-color);
+        }
+
+        .incorrect {
+            color: var(--incorrect-color);
+        }
+
+        .feedback-explanation {
+            margin-top: 10px;
+            padding: 10px;
+            border-left: 3px solid var(--button-bg);
+            /* Use primary button color for explanation border */
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+
+        .feedback-passage {
+            margin-top: 8px;
+            font-style: italic;
+            color: #757575;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            main {
+                flex-direction: column;
+            }
+
+            .passage-container,
+            .questions-container {
+                width: 100%;
+                height: 50%;
+            }
+
+            .passage-container {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .progress-container {
+                flex-wrap: wrap;
+                max-width: 60%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-area {
+                flex-wrap: wrap;
+                /* Allow items to wrap to the next line */
+                justify-content: center;
+                /* Center items when wrapped */
+                gap: 8px;
+                /* Adjusted gap for smaller screens */
+            }
+
+            .social-link {
+                padding: 6px 10px;
+                /* Reduced padding for smaller screens */
+                font-size: 13px;
+                /* Reduced font size for smaller screens */
+            }
+
+            .social-link i {
+                font-size: 1.1em;
+                /* Slightly smaller icon */
+            }
+
+            .social-link span {
+                display: inline;
+                /* Ensure text is visible */
+            }
+        }
+
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .header-controls {
+                width: 100%;
+                justify-content: space-around;
+            }
+
+            .progress-container {
+                max-width: 50%;
+            }
+
+            .progress-item {
+                width: 26px;
+                height: 26px;
+                font-size: 12px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .action-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- 
+    This test interface was developed by Shahriyor Jo'rayev
+    Telegram: @realexamielts
+-->
+<header>
+<!-- 
+    This test interface was developed by Shahriyor Jo'rayev
+    Telegram: @realexamielts
+-->
+<div class="logo-area">
+<!-- Removed the logo image tag as it was not opening -->
+<a class="social-link telegram" href="https://t.me/realexamielts" target="_blank" title="Join on Telegram">
+<i class="fab fa-telegram-plane"></i>
+<span>REAL EXAM IELTS - CD IELTS MATERIALS</span>
+</a>
+</div>
+<div class="header-controls">
+<div class="timer-container">
+<i class="fas fa-clock"></i>
+<span id="timer">20:00</span>
+<div class="timer-controls">
+<button id="start-timer" title="Start"><i class="fas fa-play"></i></button>
+<button id="pause-timer" title="Pause"><i class="fas fa-pause"></i></button>
+<button id="reset-timer" title="Reset"><i class="fas fa-redo"></i></button>
+</div>
+</div>
+<button class="mode-toggle" id="night-mode-toggle" title="Toggle Night Mode">
+<i class="fas fa-moon"></i>
+</button>
+</div>
+</header>
+<main>
+    <div class="passage-container" id="passage-container">
+        <div class="passage-content">
+
+            <h4>READING PASSAGE 2</h4>
+            <div class="instructions">You should spend about 20 minutes on Questions 14-26, which are based on
+                Reading Passage 2.</div>
+            <div class="passage-title"></div>
+            <div class="passage-text" id="passage-text">
+                <p style="text-align:center; font-weight: !important;"><b>The Role of Mothers in the Origins of Music</b><br></p>
+
+<p style="text-align:center; font-weight: !important;"><i>A leading researcher has proposed that the key to understanding the origin of music is in the playful language used between mother and child.</i><br></p>
+                                
+<p><b>A</b> In a recent lecture Richard Parncutt, a professor of systematic musicology at the University of Graz, Austria, discussed the idea that music originated from 'motherese' - the playful voices mothers adopt when speaking to infants and toddlers. According to the theory, evolutionary growth in human brain size between one and two million years ago led to earlier births, more fragile infants, and a vital need for stronger bonds between mothers and their newborns. According to Parncutt, 'motherese' arose as a way to strengthen this maternal bond and to help infants survive. 'If babies were born earlier, it is clear they would need better care in order to survive... this would involve the baby communicating its state and needs more clearly to the mother,' he says. Parncutt adds that this makes it very likely that motherese developed as an evolutionary adaptation, and that there is a large body of contemporary empirical evidence supporting the musical characteristics of motherese.</p>
+
+<p><b>B</b> Although it might appear amusing - or even nonsensical - at first glance, 'motherese' is actually a complex and refined form of communication. It contains structural musical elements such as rhythm and melody, and codes that babies and mothers understand. It also contains cross-cultural similarities with regard to the physical gestures and movements it incorporates - an important consideration when examining the origin of music. 'The sonic-gestural vocabulary conveys to both mother and infant information about the present physical and emotional condition of each, along with the current nature of interaction between them,' states Parncutt. 'Here, emotions such as surprise and disappointment are learned for the first time in a social and musical context. It is about survival in that it motivates the mother to care for the infant and gives her information about the infant's needs.' For example, mothers can understand when their babies are tired or hungry. Motherese also helps infants to acquire language.</p>
+
+<p><b>C</b> Parncutt explains that a fetus begins hearing nearly four months before birth, as it regularly hears its mother's voice, heartbeat, and digestive sounds - all of which provide information about its mother's emotional state. After birth, the baby recognises these sound patterns and its mother's correlating mood. Gary McPherson, head of the University of Melbourne's School of Music, reiterates the importance of this prenatal association, saying that music is the very first form of intelligence to reveal itself - even before birth.</p>
+
+<p><b>D</b> However, there are several competing theories about the origins of music. Parncutt developed a grading system to assess these theories, the objective being to measure their validity against a set of criteria which he called 'universal aspects of music'. Some theories suggest music originated as a form of sexual selection, similar to a peacock's tail, used to attract mates. Others propose it evolved to enhance social cohesion and cooperation within larger groups, or that it was a byproduct of other evolutionary adaptations with no specific survival purpose of its own. Parncutt's system graded each theory based on its ability to explain music's emotional power, its presence in all known cultures, and its apparent lack of a direct survival function compared to language.</p>
+
+<p><b>E</b> When evaluated against these criteria, Parncutt argues that the motherese theory provides the most comprehensive explanation. It accounts for the deep emotional connection inherent in music by linking it to the primal bond between mother and child. Furthermore, because caregiving for infants is a human universal, the theory naturally explains why music is found in all cultures around the world. The playful, non-utilitarian nature of motherese also mirrors the aesthetic and seemingly non-functional aspects of music itself, addressing the question of why music exists beyond strict survival needs.</p>
+</div>
+</div>
+</div>
+
+<div class="questions-container" id="questions-container">
+<div class="section-title">Questions 14–18.</div>
+<div class="instructions">Reading Passage 2 has five paragraphs, A–E.<br/>Choose the correct heading for each paragraph from the list of headings below.<br/>Write the correct number, i–ix, in boxes 14–18 on your answer sheet.</div>
+
+<div class="question" style="margin-bottom:10px;">
+<strong>List of Headings</strong><br>
+<b>i</b> A universal explanation for music's nature <br>
+<b>ii</b> The first sounds a baby hears <br>
+<b>iii</b> A biological change that created a need <br>
+<b>iv</b> Comparing the motherese theory to other ideas <br>
+<b>v</b> A sophisticated form of musical communication <br>
+<b>vi</b> A system for evaluating different theories <br>
+<b>vii</b> The role of fathers in infant development <br>
+<b>viii</b> The initial proposal of a maternal source for music <br>
+<b>ix</b> Music as a tool for social cooperation <br>
+</div>
+
+<div class="question-group">
+<div class="question" id="q14">
+<div class="question-title"><div class="question-number">14</div><div class="question-text">Paragraph A</div></div>
+<select name="q14">
+<option value="">Select heading...</option>
+<option value="i">i</option>
+<option value="ii">ii</option>
+<option value="iii">iii</option>
+<option value="iv">iv</option>
+<option value="v">v</option>
+<option value="vi">vi</option>
+<option value="vii">vii</option>
+<option value="viii">viii</option>
+<option value="ix">ix</option>
+</select>
+</div>
+
+<div class="question" id="q15">
+<div class="question-title"><div class="question-number">15</div><div class="question-text">Paragraph B</div></div>
+<select name="q15">
+<option value="">Select heading...</option>
+<option value="i">i</option>
+<option value="ii">ii</option>
+<option value="iii">iii</option>
+<option value="iv">iv</option>
+<option value="v">v</option>
+<option value="vi">vi</option>
+<option value="vii">vii</option>
+<option value="viii">viii</option>
+<option value="ix">ix</option>
+</select>
+</div>
+
+<div class="question" id="q16">
+<div class="question-title"><div class="question-number">16</div><div class="question-text">Paragraph C</div></div>
+<select name="q16">
+<option value="">Select heading...</option>
+<option value="i">i</option>
+<option value="ii">ii</option>
+<option value="iii">iii</option>
+<option value="iv">iv</option>
+<option value="v">v</option>
+<option value="vi">vi</option>
+<option value="vii">vii</option>
+<option value="viii">viii</option>
+<option value="ix">ix</option>
+</select>
+</div>
+
+<div class="question" id="q17">
+<div class="question-title"><div class="question-number">17</div><div class="question-text">Paragraph D</div></div>
+<select name="q17">
+<option value="">Select heading...</option>
+<option value="i">i</option>
+<option value="ii">ii</option>
+<option value="iii">iii</option>
+<option value="iv">iv</option>
+<option value="v">v</option>
+<option value="vi">vi</option>
+<option value="vii">vii</option>
+<option value="viii">viii</option>
+<option value="ix">ix</option>
+</select>
+</div>
+
+<div class="question" id="q18">
+<div class="question-title"><div class="question-number">18</div><div class="question-text">Paragraph E</div></div>
+<select name="q18">
+<option value="">Select heading...</option>
+<option value="i">i</option>
+<option value="ii">ii</option>
+<option value="iii">iii</option>
+<option value="iv">iv</option>
+<option value="v">v</option>
+<option value="vi">vi</option>
+<option value="vii">vii</option>
+<option value="viii">viii</option>
+<option value="ix">ix</option>
+</select>
+</div>
+</div>
+
+<div class="section-title">Questions 20–22.</div>
+<div class="instructions">Complete the sentences below.<br/>Choose NO MORE THAN TWO WORDS from the passage for each answer.<br/>Write your answers in boxes 20–22 on your answer sheet.</div>
+
+<div class="question" id="q20">
+<div class="question-title"><div class="question-number">20</div><div class="question-text">Parncutt suggests that the growth of the human brain resulted in babies being born <input type="text" name="q20" class="fill-in-the-blank"/></div></div>
+</div>
+
+<div class="question" id="q21">
+<div class="question-title"><div class="question-number">21</div><div class="question-text">Motherese is considered a type of evolutionary <input type="text" name="q21" class="fill-in-the-blank"/></div></div>
+</div>
+
+<div class="question" id="q22">
+<div class="question-title"><div class="question-number">22</div><div class="question-text">According to Gary McPherson, musical intelligence is present even <input type="text" name="q22" class="fill-in-the-blank"/></div></div>
+</div>
+
+<div class="section-title">Questions 23–26</div>
+<div class="instructions">Complete the notes using the list of words, A–I, below.</div>
+
+<p style="text-align:center; font-weight: bold !important;"><b>Parncutt's Evaluation of Competing Theories</b></p>
+
+<p>
+  Parncutt created a grading system to assess different theories of music's origin based on universal aspects of music. Some competing theories propose that music functioned as a mechanism for
+  <select name="q23" id="q23">
+    <option value="">23. Select...</option>
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="D">D</option>
+    <option value="E">E</option>
+    <option value="F">F</option>
+    <option value="G">G</option>
+    <option value="H">H</option>
+    <option value="I">I</option>
+  </select>,
+  or that it was useful for building
+  <select name="q24" id="q24">
+    <option value="">24. Select...</option>
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="D">D</option>
+    <option value="E">E</option>
+    <option value="F">F</option>
+    <option value="G">G</option>
+    <option value="H">H</option>
+    <option value="I">I</option>
+  </select>
+  within communities. Parncutt's own theory, centred on motherese, received a high grade because it explains music's
+  <select name="q25" id="q25">
+    <option value="">25. Select...</option>
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="D">D</option>
+    <option value="E">E</option>
+    <option value="F">F</option>
+    <option value="G">G</option>
+    <option value="H">H</option>
+    <option value="I">I</option>
+  </select>
+  connection and its presence across all cultures. It also aligns with music's
+  <select name="q26" id="q26">
+    <option value="">26. Select...</option>
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="D">D</option>
+    <option value="E">E</option>
+    <option value="F">F</option>
+    <option value="G">G</option>
+    <option value="H">H</option>
+    <option value="I">I</option>
+  </select>
+  quality, which resembles the playful interaction between a mother and her infant.
+</p>
+
+<!-- A–I Wordlist -->
+<div class="wordlist">
+  <div><strong>A.</strong> emotional</div>
+  <div><strong>B.</strong> social cohesion</div>
+  <div><strong>C.</strong> sexual selection</div>
+  <div><strong>D.</strong> survival function</div>
+  <div><strong>E.</strong> aesthetic</div>
+  <div><strong>F.</strong> rhythmic</div>
+  <div><strong>G.</strong> prenatal</div>
+  <div><strong>H.</strong> universal</div>
+  <div><strong>I.</strong> communicative</div>
+</div>
+
+<style>
+  .section-title{font-weight:600;margin:8px 0 6px}
+  .wordlist{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:6px; margin-top:12px
+  }
+  select{min-width:160px;margin:0 3px;}
+</style>
+
+
+<div style="height:30px"></div>
+</div>
+</main>
+
+<footer>
+<div class="progress-container" id="progress-container"></div>
+<div class="action-buttons">
+<button class="btn-secondary" id="reset-btn">Reset Answers</button>
+<button class="btn-primary" id="submit-btn">Submit Answers</button>
+</div>
+</footer>
+
+<div class="feedback-overlay" id="feedback-overlay">
+<div class="feedback-container" id="feedback-container">
+<div class="feedback-header"><div class="feedback-title"><i class="fas fa-chart-bar"></i> Your Results <span class="score-display" id="score-display">0/12</span></div><button id="close-feedback" title="Close"><i class="fas fa-times"></i></button></div>
+<div class="feedback-body" id="feedback-body"></div>
+</div>
+</div>
+
+<script>
+// Night Mode Toggle
+document.getElementById('night-mode-toggle').addEventListener('click', function(){document.body.classList.toggle('night-mode');const icon=this.querySelector('i');if(document.body.classList.contains('night-mode')){icon.classList.remove('fa-moon');icon.classList.add('fa-sun')}else{icon.classList.remove('fa-sun');icon.classList.add('fa-moon')}})
+
+// Correct answers for Questions 14-26
+const correctAnswers = {
+q14: 'viii',
+q15: 'v',
+q16: 'ii',
+q17: 'vi',
+q18: 'i',
+q20: 'earlier',
+q21: 'adaptation',
+q22: 'before birth',
+q23: 'C',
+q24: 'B',
+q25: 'A',
+q26: 'E'
+};
+
+function normalize(s){return (s||'').toString().trim().toLowerCase();}
+
+// Submit handler
+document.getElementById('submit-btn').addEventListener('click', function(){
+let score=0;let total=Object.keys(correctAnswers).length;let feedbackHTML='';
+for(const [qid, correct] of Object.entries(correctAnswers)){
+let userAnswer='';
+const elems=document.getElementsByName(qid);
+if(!elems || elems.length===0) continue;
+const el=elems[0];
+if(el.tagName==='SELECT') userAnswer=el.value;
+else userAnswer=el.value;
+const isCorrect=normalize(userAnswer)===normalize(correct);
+if(isCorrect) score++;
+let displayUser = userAnswer || '(no answer)';
+feedbackHTML += `<div class="feedback-item"><div class="feedback-question">Q${qid.replace('q','')}</div><div class="feedback-answer ${isCorrect? 'correct':'incorrect'}">Your Answer: ${displayUser}<br/>${isCorrect? '✔ Correct' : `✘ Incorrect (Correct: ${correct})`}</div>`;
+
+// Add short explanation
+let explanation='';
+switch(qid){
+case 'q14': explanation = 'Paragraph A introduces Parncutt\'s main proposal that music originated from “motherese,” the playful, rhythmic, and melodic way mothers naturally communicate with infants. This interaction, he argues, emerged because evolutionary changes made babies more dependent on their mothers, requiring stronger emotional bonds for survival.'; break;
+
+case 'q15': explanation = 'Paragraph B develops the idea that motherese is not mere baby talk, but a sophisticated form of communication. It integrates musical qualities such as rhythm and melody, along with gestures and expressions, which allow mothers and infants to share emotions and intentions even before language develops. This social-musical interaction also plays a key role in early emotional and linguistic learning.'; break;
+
+case 'q16': explanation = 'Paragraph C explores prenatal hearing and the fetus\'s exposure to the mother\'s heartbeat, voice, and bodily sounds. Parncutt explains that this early auditory experience establishes emotional familiarity, helping newborns recognize and connect with their mothers after birth. Gary McPherson supports this by stating that music-like awareness is one of the first forms of intelligence to appear, even before birth.'; break;
+
+case 'q17': explanation = 'Paragraph D introduces Parncutt\'s grading system, designed to evaluate different theories about the origins of music based on universal musical criteria. Competing ideas include music as a product of sexual selection, as a way to enhance social cohesion, or as an accidental byproduct of evolution. The grading system compares how well each theory explains music\'s emotional impact, cultural universality, and lack of direct survival function.'; break;
+
+case 'q18': explanation = 'Paragraph E concludes that the motherese theory best fits all the evaluation criteria. It explains the deep emotional resonance of music by linking it to the ancient mother-child bond, accounts for music\'s universality across cultures, and mirrors music\'s aesthetic, non-utilitarian qualities. Parncutt suggests that this emotional and playful form of communication reveals why humans make and enjoy music even without a survival purpose.'; break;
+
+case 'q20': explanation = 'Parncutt connects the evolutionary expansion of the human brain to earlier childbirth, which resulted in more vulnerable infants. Because babies were born less developed, mothers had to communicate more effectively with them, leading to the emergence of motherese as a survival tool.'; break;
+
+case 'q21': explanation = 'He proposes that motherese was not just a coincidence but an evolutionary adaptation—developed to strengthen emotional bonds and improve infant care. This adaptation allowed mothers to interpret babies\' emotional states while fostering feelings of affection and protection.'; break;
+
+case 'q22': explanation = 'McPherson emphasizes that musical intelligence manifests even before birth. He highlights how prenatal auditory experiences—like hearing the mother\'s heartbeat and voice—lay the foundation for the brain\'s early development of rhythm, tone, and emotional perception.'; break;
+
+case 'q23': explanation = 'Some competing theories argue that music evolved through sexual selection, functioning as a display of fitness to attract potential mates—similar to a peacock\'s tail. This view interprets music as an evolutionary signal of health, intelligence, or creativity.'; break;
+
+case 'q24': explanation = 'Another theory proposes that music developed to strengthen social cohesion and cooperation within early human groups. By sharing songs and rhythms, communities could synchronize emotions and actions, fostering unity and trust among members.'; break;
+
+case 'q25': explanation = 'Parncutt\'s motherese theory stands out because it successfully explains music\'s emotional essence—how it moves people deeply and connects them to others. The emotional link between mother and child serves as a prototype for the feelings music evokes in listeners today.'; break;
+
+case 'q26': explanation = 'Finally, the aesthetic and playful nature of motherese closely mirrors music\'s artistic side. Just as motherese is not directly tied to survival, music is valued for its beauty and expression rather than utility—showing that humans evolved to find joy and meaning in sound itself.'; break;
+
+default: explanation='';
+}
+if(explanation) feedbackHTML += `<div class="feedback-explanation">${explanation}</div>`;
+feedbackHTML += `</div>`;
+}
+document.getElementById('feedback-body').innerHTML = feedbackHTML;
+document.getElementById('score-display').textContent = `${score}/${total}`;
+document.getElementById('feedback-overlay').style.display = 'flex';
+});
+
+document.getElementById('close-feedback').addEventListener('click', function(){document.getElementById('feedback-overlay').style.display='none'});
+
+
+
+// Modified highlight logic with color picker and remove functionality
+let highlightTooltip = null;
+let selectedRange = null;
+
+function createColorPicker(x, y, applyColorCallback) {
+    const colors = ["lightgreen", "yellow", "lightskyblue"];
+    const picker = document.createElement("div");
+    picker.className = "highlight-tooltip";
+    picker.style.top = `${y}px`;
+    picker.style.left = `${x}px`;
+    picker.style.position = "fixed";
+    picker.style.background = "#333";
+    picker.style.color = "white";
+    picker.style.padding = "5px 10px";
+    picker.style.borderRadius = "4px";
+    picker.style.zIndex = 1000;
+    picker.style.display = "flex";
+    colors.forEach(color => {
+        const btn = document.createElement("button");
+        btn.style.backgroundColor = color;
+        btn.style.border = "none";
+        btn.style.width = "20px";
+        btn.style.height = "20px";
+        btn.style.margin = "0 4px";
+        btn.style.borderRadius = "50%";
+        btn.title = `Highlight with ${color}`;
+        btn.addEventListener("click", () => {
+            applyColorCallback(color);
+            picker.remove();
+        });
+        picker.appendChild(btn);
+    });
+    document.body.appendChild(picker);
+    return picker;
+}
+
+function applyHighlight(color) {
+    if (!selectedRange) return;
+    const span = document.createElement("span");
+    span.className = "highlight";
+    span.style.backgroundColor = color;
+    span.setAttribute("data-color", color);
+    span.appendChild(selectedRange.extractContents());
+    selectedRange.insertNode(span);
+    selectedRange = null;
+    window.getSelection().removeAllRanges();
+
+    span.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (highlightTooltip) highlightTooltip.remove();
+        highlightTooltip = document.createElement("div");
+        highlightTooltip.className = "highlight-tooltip";
+        highlightTooltip.style.top = `${e.clientY}px`;
+        highlightTooltip.style.left = `${e.clientX}px`;
+        highlightTooltip.innerHTML = `<button style="color:white;background:red;border:none;padding:5px 10px;border-radius:4px;cursor:pointer;">Remove Highlight</button>`;
+        highlightTooltip.querySelector("button").addEventListener("click", function () {
+            const parent = span.parentNode;
+            while (span.firstChild) {
+                parent.insertBefore(span.firstChild, span);
+            }
+            parent.removeChild(span);
+            parent.normalize();
+            highlightTooltip.remove();
+        });
+        document.body.appendChild(highlightTooltip);
+    });
+}
+
+
+function handleMouseUp(e) {
+    const selection = window.getSelection();
+    if (selection.toString().trim() === '') return;
+    if (!e.currentTarget.contains(selection.anchorNode)) return;
+
+    selectedRange = selection.getRangeAt(0).cloneRange();
+    const rect = selectedRange.getBoundingClientRect();
+
+    if (highlightTooltip) highlightTooltip.remove();
+
+    highlightTooltip = createColorPicker(rect.left, rect.top - 40, applyHighlight);
+}
+
+document.getElementById('passage-text').addEventListener('mouseup', handleMouseUp);
+document.getElementById('questions-container').addEventListener('mouseup', handleMouseUp);
+
+document.addEventListener('mousedown', (e) => {
+    if (highlightTooltip && !highlightTooltip.contains(e.target)) {
+        highlightTooltip.remove();
+        highlightTooltip = null;
+        window.getSelection().removeAllRanges();
+    }
+});
+
+// Reset
+document.getElementById('reset-btn').addEventListener('click', function(){const selects=document.querySelectorAll('select');selects.forEach(s=>s.value='');const texts=document.querySelectorAll('input[type=text]');texts.forEach(t=>t.value='');const progressItems=document.querySelectorAll('.progress-item.completed');progressItems.forEach(i=>i.classList.remove('completed'))});
+
+// Progress tracker
+function initializeProgressTracker(){const progressContainer=document.getElementById('progress-container');const questions=[{id:'q14',number:14},{id:'q15',number:15},{id:'q16',number:16},{id:'q17',number:17},{id:'q18',number:18},{id:'q20',number:20},{id:'q21',number:21},{id:'q22',number:22},{id:'q23',number:23},{id:'q24',number:24},{id:'q25',number:25},{id:'q26',number:26}];questions.forEach(({id,number})=>{const item=document.createElement('div');item.className='progress-item';item.textContent=number;item.dataset.qid=id;item.addEventListener('click',()=>{const el=document.getElementById(id);if(el) el.scrollIntoView({behavior:'smooth'});});progressContainer.appendChild(item);});}
+
+function updateProgressStatus(){const progressItems=document.querySelectorAll('.progress-item');progressItems.forEach(item=>{const qid=item.dataset.qid;const questionElem=document.getElementById(qid);if(!questionElem) return;let answered=false;const select=questionElem.querySelector('select');if(select && select.value!=='') answered=true;const textInputs=questionElem.querySelectorAll('input[type=text]');if(!answered && textInputs.length>0){textInputs.forEach(inp=>{if(inp.value.trim()!=='') answered=true;});}
+if(answered) item.classList.add('completed'); else item.classList.remove('completed');if(answered) questionElem.classList.add('answered'); else questionElem.classList.remove('answered');});}
+
+document.addEventListener('change', updateProgressStatus);document.addEventListener('input', updateProgressStatus);document.addEventListener('DOMContentLoaded', ()=>{initializeProgressTracker();updateProgressStatus();});
+
+// Timer
+let timerInterval;let timeRemaining=20*60;function updateTimerDisplay(){const minutes=Math.floor(timeRemaining/60).toString().padStart(2,'0');const seconds=(timeRemaining%60).toString().padStart(2,'0');document.getElementById('timer').textContent=`${minutes}:${seconds}`}
+document.getElementById('start-timer').addEventListener('click',()=>{if(timerInterval) return;timerInterval=setInterval(()=>{if(timeRemaining>0){timeRemaining--;updateTimerDisplay()}else{clearInterval(timerInterval);timerInterval=null;alert('Time is up!')}} ,1000);});document.getElementById('pause-timer').addEventListener('click',()=>{clearInterval(timerInterval);timerInterval=null});document.getElementById('reset-timer').addEventListener('click',()=>{clearInterval(timerInterval);timerInterval=null;timeRemaining=20*60;updateTimerDisplay()});document.addEventListener('DOMContentLoaded', updateTimerDisplay);
+
+</script>
+</body>
+<!-- 
+    This test interface was developed by Shahriyor Jo'rayev
+    Telegram: @realexamielts
+-->
+</html>

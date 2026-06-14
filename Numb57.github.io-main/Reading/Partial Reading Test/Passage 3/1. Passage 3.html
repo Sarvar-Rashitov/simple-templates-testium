@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Real exam IELTS</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --passage-bg: #f8f9fa;
+            --questions-bg: #ffffff;
+            --border-color: #5770ff;
+            --highlight-color: springgreen;
+            /* Changed highlight color */
+
+            /* New Header & Social Colors */
+            --header-bg: #F8F8F8;
+            /* Very light gray for header background */
+            --header-text: #333333;
+            /* Dark text for light header */
+            --telegram-blue: #0088CC;
+            --instagram-pink: #E4405F;
+            --youtube-red: #FF0000;
+
+            /* Button Colors (Red themed) */
+            --button-bg: #28a745;
+            /* Primary button red */
+            --button-hover: #218838;
+            /* Darker red on hover */
+
+            --correct-color: #28a745;
+            /* Standard green */
+            --incorrect-color: #dc3545;
+            /* Standard red */
+            --progress-complete: #28a745;
+            --progress-incomplete: #bdbdbd;
+
+            /* Timer Colors (Red themed) */
+            --timer-bg: #0088CC;
+            /* Very light red/pink */
+            --timer-text: #ffffff;
+            /* Darker red */
+
+            --footer-bg: #f5f5f5;
+        
+            --header-dyn-height: 60px;
+            --footer-dyn-height: 64px;
+            --main-dyn-height: calc(100vh - var(--header-dyn-height) - var(--footer-dyn-height));
+    
+        }
+
+        .night-mode {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --passage-bg: #1e1e1e;
+            --questions-bg: #1e1e1e;
+            --border-color: #424242;
+            --highlight-color: #0084ff;
+            /* Darker springgreen for night mode */
+
+            /* Night Mode Header & Social Colors */
+            --header-bg: #1a1a1a;
+            /* Dark gray for header background */
+            --header-text: #ffffff;
+            /* White text for dark header */
+            --telegram-blue: #005f99;
+            /* Darker telegram blue */
+            --instagram-pink: #b2334b;
+            /* Darker instagram pink */
+            --youtube-red: #b20000;
+            /* Darker YouTube red */
+
+            /* Night Mode Button Colors */
+            --button-bg: #990000;
+            /* Darker primary button red */
+            --button-hover: #7a0000;
+            /* Even darker red on hover */
+
+            --correct-color: #218838;
+            /* Darker green */
+            --incorrect-color: #c82333;
+            /* Darker red */
+            --progress-complete: #218838;
+            --progress-incomplete: #616161;
+
+            /* Night Mode Timer Colors */
+            --timer-bg: #0088CC;
+            /* Dark red */
+            --timer-text: #ffcdd2;
+            /* Lighter red */
+
+            --footer-bg: #121212;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .logo-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            /* Space between social links */
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            /* Space between icon and text */
+            color: white;
+            /* Text color is always white for social links */
+            padding: 8px 15px;
+            border-radius: 50px;
+            /* Pill shape */
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-1px);
+        }
+
+        .social-link i {
+            font-size: 1.2em;
+            /* Makes icon slightly larger than text */
+        }
+
+        /* Specific styling for social links */
+        .social-link.telegram {
+            background-color: var(--telegram-blue);
+        }
+
+        .social-link.telegram:hover {
+            background-color: #007bb5;
+            /* Slightly darker */
+        }
+
+        .social-link.instagram {
+            background-color: var(--instagram-pink);
+        }
+
+        .social-link.instagram:hover {
+            background-color: #d62976;
+            /* Slightly darker */
+        }
+
+        .social-link.youtube {
+            background-color: var(--youtube-red);
+        }
+
+        .social-link.youtube:hover {
+            background-color: #CC0000;
+            /* Slightly darker */
+        }
+
+
+        .header-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .timer-container {
+            background-color: var(--timer-bg);
+            color: var(--timer-text);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timer-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .timer-controls button {
+            background: none;
+            border: none;
+            color: var(--timer-text);
+            cursor: pointer;
+            font-size: 16px;
+            padding: 4px;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timer-controls button:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            /* Darker hover for light timer */
+        }
+
+        .night-mode .timer-controls button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            /* Lighter hover for dark timer */
+        }
+
+        .mode-toggle {
+            background: none;
+            border: none;
+            color: var(--header-text);
+            cursor: pointer;
+            font-size: 20px;
+            padding: 6px;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mode-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            /* Darker hover for light header */
+        }
+
+        .night-mode .mode-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            /* Lighter hover for dark header */
+        }
+
+        main {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .passage-container,
+        .questions-container {
+            height: 100%;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .passage-container {
+            width: 50%;
+            background-color: var(--passage-bg);
+            border-right: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .questions-container {
+            width: 50%;
+            background-color: var(--questions-bg);
+        }
+
+        .passage-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .passage-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .passage-text {
+            font-size: 17px;
+        }
+
+        .question-text {
+            font-size: 17px;
+            line-height: 1.8;
+            /* Increased line-height for fill-in-the-blank */
+        }
+
+        .passage-text p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .highlight {
+            background-color: var(--highlight-color);
+            cursor: pointer;
+        }
+
+        .highlight-tooltip {
+            position: absolute;
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            z-index: 1000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 25px 0 15px;
+            color: var(--text-color);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .question-group {
+            margin-bottom: 30px;
+        }
+
+        .question {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--passage-bg);
+            border-left: 4px solid var(--border-color);
+        }
+
+        .question-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: baseline;
+            /* Align baselines of number and text */
+        }
+
+        .question-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background-color: var(--progress-incomplete);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            margin-right: 10px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .question.answered .question-number {
+            background-color: var(--progress-complete);
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .option input {
+            margin-right: 8px;
+        }
+
+        /* Styling for the new inline input fields */
+        .fill-in-the-blank {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--text-color);
+            width: 150px;
+            font-family: inherit;
+            font-size: 1em;
+            /* Inherit font size from parent */
+            color: inherit;
+            padding: 0 4px 2px 4px;
+            /* Add some padding */
+            margin: 0 3px;
+            /* Add some margin */
+            vertical-align: baseline;
+            /* Align with the text */
+            text-align: center;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .fill-in-the-blank:focus {
+            border-bottom-color: var(--button-bg);
+        }
+
+
+        .instructions {
+            font-size: 14px;
+            color: #757575;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-container {
+            display: flex;
+            gap: 8px;
+        }
+
+        .progress-item {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--progress-incomplete);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .progress-item:hover {
+            transform: scale(1.1);
+        }
+
+        .progress-item.completed {
+            background-color: var(--progress-complete);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--button-bg);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--button-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--button-bg);
+            /* Use primary button color for border */
+            color: var(--button-bg);
+            /* Use primary button color for text */
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(204, 0, 0, 0.1);
+            /* Light red tint on hover */
+        }
+
+        .night-mode .btn-secondary:hover {
+            background-color: rgba(153, 0, 0, 0.2);
+            /* Darker red tint on hover for night mode */
+        }
+
+
+        .feedback-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            display: none;
+            /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .feedback-container {
+            background-color: var(--passage-bg);
+            width: 90%;
+            max-width: 900px;
+            height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feedback-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .feedback-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #close-feedback {
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        .score-display {
+            font-size: 24px;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+
+        .feedback-body {
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .feedback-item {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--questions-bg);
+        }
+
+        .feedback-question {
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback-answer {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .correct {
+            color: var(--correct-color);
+        }
+
+        .incorrect {
+            color: var(--incorrect-color);
+        }
+
+        .feedback-explanation {
+            margin-top: 10px;
+            padding: 10px;
+            border-left: 3px solid var(--button-bg);
+            /* Use primary button color for explanation border */
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+
+        .feedback-passage {
+            margin-top: 8px;
+            font-style: italic;
+            color: #757575;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            main {
+                flex-direction: column;
+            
+            /* Equal split that ignores the navigator/footer height */
+            main {
+                height: var(--main-dyn-height);   /* viewport minus header+footer */
+                overflow: hidden;
+            
+            .passage-container,
+            .questions-container {
+                overflow: auto; /* allow scrolling inside each half */
+                -webkit-overflow-scrolling: touch;
+            }
+    
+}
+            .passage-container,
+            .questions-container {
+                flex: 1 1 0;   /* equal halves */
+                height: auto;  /* let flex control the height */
+            }
+    
+        }
+
+            .passage-container,
+            .questions-container {
+                width: 100%;
+                height: 50%;
+            }
+
+            .passage-container {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .progress-container {
+                flex-wrap: wrap;
+                max-width: 60%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-area {
+                flex-wrap: wrap;
+                /* Allow items to wrap to the next line */
+                justify-content: center;
+                /* Center items when wrapped */
+                gap: 8px;
+                /* Adjusted gap for smaller screens */
+            }
+
+            .social-link {
+                padding: 6px 10px;
+                /* Reduced padding for smaller screens */
+                font-size: 13px;
+                /* Reduced font size for smaller screens */
+            }
+
+            .social-link i {
+                font-size: 1.1em;
+                /* Slightly smaller icon */
+            }
+
+            .social-link span {
+                display: inline;
+                /* Ensure text is visible */
+            }
+        }
+
+
+        @media (max-width: 600px) {
+  /* Header stacks neatly */
+  header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  /* Main viewport height = 100vh - header - footer */
+  main {
+    height: var(--main-dyn-height);
+    overflow: hidden;
+  }
+
+  /* Equal halves already applied in <=900px; ensure no extra bottom padding */
+  .passage-container,
+  .questions-container {
+    padding-bottom: 0 !important;
+  }
+
+  /* Questions scroll inside, and keep enough space at bottom for footer */
+  .questions-container {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: calc(var(--footer-dyn-height) + 32px) !important;
+  }
+
+  /* Footer fixed at bottom with actions visible */
+  footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2000;
+    background: var(--footer-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 10px 12px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .progress-container {
+    width: 100%;
+  }
+
+  .action-buttons {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+  }
+
+  #submit-btn, #reset-btn {
+    flex: 1 1 0;
+    max-width: 100%;
+  }
+}
+  .questions-container::after {
+    content: "";
+    display: block;
+    height: 1px; /* ensures bottom spacing renders */
+  }
+
+}
+
+}
+
+}
+
+            .header-controls {
+                width: 100%;
+                justify-content: space-around;
+            }
+
+            .progress-container {
+                max-width: 100%;
+            }
+
+            .progress-item {
+                width: 26px;
+                height: 26px;
+                font-size: 12px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .action-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+         /* 🔥 YANGI QO‘SHISH: submit tugmasi ko‘rinib turishi uchun */
+        #submit-btn {}
+
+    }
+
+    /* === MOBILE fix: make Submit always visible === */
+@media (max-width: 600px) {
+  /* Footer doim pastda ko‘rinsin */
+  footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: var(--footer-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 10px 12px;
+    gap: 10px;               /* sizda bor bo‘lsa ham, mobil uchun qulay */
+    flex-direction: column;  /* tugmalar pastma-past chiqsin (istasa row ham bo‘ladi) */
+  }
+
+  /* Savollar paneli pastdagi footer ostiga tushib ketmasin */
+  .questions-container {
+    padding-bottom: 96px; /* footer balandligiga yetarli bo‘sh joy */
+  }
+
+  /* Submit tugmasi to‘liq enni egallasin */
+  #submit-btn {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+  }
+
+  /* Xohlasangiz Reset ham kengayadi */
+  #reset-btn {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+  }
+
+  /* Navigator allaqachon moslashdi — baribir to‘liq en */
+  .progress-container {
+    max-width: 100%;
+  }
+}
+
+        
+    
+/* Ensure word list at the end doesn't hide behind footer */
+.wordlist, .word-list, .list-of-words {
+  margin-bottom: 24px !important;
+  padding-bottom: 8px !important;
+}
+
+</style>
+</head>
+<body>
+<!-- 
+    This test interface was developed by Shahriyor Jo'rayev
+    Telegram: @realexamielts
+-->
+<header>
+<!-- 
+    This test interface was developed by Shahriyor Jo'rayev
+    Telegram: @realexamielts
+-->
+<div class="logo-area">
+<!-- Removed the logo image tag as it was not opening -->
+<a class="social-link telegram" href="https://t.me/realexamielts" target="_blank" title="Join on Telegram">
+<i class="fab fa-telegram-plane"></i>
+<span>REAL EXAM IELTS - CD IELTS MATERIALS</span>
+</a>
+</div>
+<div class="header-controls">
+<div class="timer-container">
+<i class="fas fa-clock"></i>
+<span id="timer">20:00</span>
+<div class="timer-controls">
+<button id="start-timer" title="Start"><i class="fas fa-play"></i></button>
+<button id="pause-timer" title="Pause"><i class="fas fa-pause"></i></button>
+<button id="reset-timer" title="Reset"><i class="fas fa-redo"></i></button>
+</div>
+</div>
+<button class="mode-toggle" id="night-mode-toggle" title="Toggle Night Mode">
+<i class="fas fa-moon"></i>
+</button>
+</div>
+</header>
+<main>
+    <div class="passage-container" id="passage-container">
+        <div class="passage-content">
+            <h4>READING PASSAGE 3</h4>
+            <div class="instructions">You should spend about 20 minutes on Questions 27-40, which are based on
+                Reading Passage 3.</div>
+            <div class="passage-title"></div>
+            <div class="passage-text" id="passage-text">
+                <p style="text-align:center; font-weight: bold !important;"><b>Robert Louis Stevenson</b></p>
+
+                <p></p>A Scottish novelist, poet, essayist, and travel writer, Robert Louis Stevenson was born at 8 Howard Place, Edinburgh, Scotland, on 13 November 1850. It has been more than 100 years since his death. Stevenson was a writer who caused conflicting opinions about his works. On one hand, he was often highly praised for his expert prose and style by many English-language critics. On the other hand, others criticized the religious themes in his works, often misunderstanding Stevenson’s own religious beliefs. Since his death a century before, critics and biographers have disagreed on the legacy of Stevenson’s writing. Two biographers, KF and CP, wrote a biography about Stevenson with a clear focus. They chose not to criticize aspects of Stevenson’s personal life. Instead, they focused on his writing, and gave high praise to his writing style and skill.</p>
+
+                <p>The literary pendulum has swung these days. Different critics have different opinions towards Robert Louis Stevenson’s works. Though today, Stevenson is one of the most translated authors in the world, his works have sustained a wide variety of negative criticism throughout his life. It was like a complete reversal of polarity—from highly positive to slightly less positive to clearly negative; after being highly praised as a great writer, he became an example of an author with corrupt ethics and lack of moral. Many literary critics passed his works off as children’s stories or horror stories, and thought to have little social value in an educational setting. Stevenson’s works were often excluded from the literature curriculum because of their controversial nature. These debates remain, and many critics still assert that despite his skill, his literary works still lack moral value.</p>
+
+                <p>One of the main reasons why Stevenson’s literary works attracted so much criticism was due to the genre of his writing. Stevenson mainly wrote adventure stories, which was part of a popular and entertaining writing fad at the time. Many of us believe adventure stories are exciting, offer engaging characters, action, and mystery but ultimately can’t teach moral principles. The plot points are one-dimensional and rarely offer a deeper moral meaning, instead focusing on exciting and shocking plot twists and thrilling events. His works were even criticised by fellow authors. Though Stevenson’s works have deeply influenced Oscar Wilde, Wilde often joked that Stevenson would have written better works if he wasn’t born in Scotland. Other authors came to Stevenson’s defence, including Galsworthy who claimed that Stevenson is a greater writer than Thomas Hardy.</p>
+
+                <p>Despite Wilde’s criticism, Stevenson’s Scottish identity was an integral part of his written works. Although Stevenson’s works were not popular in Scotland when he was alive, many modern Scottish literary critics claim that Sir Walter Scott and Robert Louis Stevenson are the most influential writers in the history of Scotland. While many critics exalt Sir Walter Scott as a literary genius because of his technical ability, others argue that Stevenson deserves the same recognition for his natural ability to capture stories and characters in words. Many of Scott’s works were taken more seriously as literature for their depth due to their tragic themes, but fans of Stevenson praise his unique style of story-telling and capture of human nature. Stevenson’s works, unlike other British authors, captured the unique day to day life of average Scottish people. Many literary critics point to this as a flaw of his works. According to the critics, truly important literature should transcend local culture and stories. However, many critics praise the local taste of his literature. To this day, Stevenson’s works provide valuable insight to life in Scotland during the 19th century.</p>
+
+                <p>Despite much debate of Stevenson’s writing topics, his writing was not the only source of attention for critics. Stevenson’s personal life often attracted a lot of attention from his fans and critics alike. Some even argue that his personal life eventually outshone his writing. Stevenson had been plagued with health problems his whole life, and often had to live in much warmer climates than the cold, dreary weather of Scotland in order to recover. So he took his family to a south pacific island Samoa, which was a controversial decision at that time. However, Stevenson did not regret the decision. The sea air and thrill of adventure complimented the themes of his writing, and for a time restored his health. From there, Stevenson gained a love of traveling, and for nearly three years he wandered the eastern and central Pacific. Much of his works reflected this love of travel and adventure that Stevenson experienced in the Pacific islands. It was as a result of this biographical attention that the feeling grew that interest in Stevenson’s life had taken the place of interest in his works. Whether critics focus on his writing subjects, his religious beliefs, or his eccentric lifestyle of travel and adventure, people from the past and present have different opinions about Stevenson as an author. Today, he remains a controversial yet widely popular figure in Western literature.</p>
+                    
+            </div>
+        </div>
+    </div>
+    <div class="questions-container" id="questions-container">
+      
+      <div class="section-title">Questions 27-31</div>
+      <div class="instructions">Choose the correct letter, A, B, C, or D.<br>
+        Write the correct letter in boxes 27-31 on your answer sheet.
+      </div>
+      <div class="question-group">
+
+      <div class="question" id="q27">
+        <div class="question-title">
+          <div class="question-number">27</div>
+          <div class="question-text">
+            Stevenson's biographers KF and CP
+          </div>
+        </div>
+        <label><input type="radio" name="q27" value="A"> A Underestimated the role of family played in Stevenson's life.</label><br>
+        <label><input type="radio" name="q27" value="B"> B Overestimated the writer's works in literature history.</label><br>
+        <label><input type="radio" name="q27" value="C"> C Exaggerated Stevenson's religious belief in his works.</label><br>
+        <label><input type="radio" name="q27" value="D"> D Elevated Stevenson's role as a writer.</label><br>
+      </div>
+      
+      <div class="question" id="q28">
+        <div class="question-title">
+          <div class="question-number">28</div>
+          <div class="question-text">
+            The main point of the second paragraph is
+          </div>
+        </div>
+        <label><input type="radio" name="q28" value="A"> A The public gives a more fair criticism to Stevenson's works.</label><br>
+        <label><input type="radio" name="q28" value="B"> B Recent criticism has been justified.</label><br>
+        <label><input type="radio" name="q28" value="C"> C The style of Stevenson's works overweigh his faults in his life.</label><br>
+        <label><input type="radio" name="q28" value="D"> D Stevenson's works’ drawback is lack of ethical nature.</label><br>
+      </div>
+      
+      <div class="question" id="q29">
+        <div class="question-title">
+          <div class="question-number">29</div>
+          <div class="question-text">
+            According to the author, adventure stories
+          </div>
+        </div>
+        <label><input type="radio" name="q29" value="A"> A Do not provide plot twists well.</label><br>
+        <label><input type="radio" name="q29" value="B"> B Cannot be used by writers to show moral values.</label><br>
+        <label><input type="radio" name="q29" value="C"> C Are more fashionable art forms.</label><br>
+        <label><input type="radio" name="q29" value="D"> D Can be found in other's works but not in Stevenson's.</label><br>
+      </div>
+      
+      <div class="question" id="q30">
+        <div class="question-title">
+          <div class="question-number">30</div>
+          <div class="question-text">
+            What does the author say about Stevenson's works?
+          </div>
+        </div>
+        <label><input type="radio" name="q30" value="A"> A They describe the life of people in Scotland.</label><br>
+        <label><input type="radio" name="q30" value="B"> B They are commonly regarded as real literature.</label><br>
+        <label><input type="radio" name="q30" value="C"> C They were popular during Stevenson's life.</label><br>
+        <label><input type="radio" name="q30" value="D"> D They transcend the local culture and stories.</label><br>
+      </div>
+      
+      <div class="question" id="q31">
+        <div class="question-title">
+          <div class="question-number">31</div>
+          <div class="question-text">
+            The lifestyle of Stevenson
+          </div>
+        </div>
+        <label><input type="radio" name="q31" value="A"> A Made his family envy him so much.</label><br>
+        <label><input type="radio" name="q31" value="B"> B Should be responsible for his death.</label><br>
+        <label><input type="radio" name="q31" value="C"> C Gained more attention from the public than his works.</label><br>
+        <label><input type="radio" name="q31" value="D"> D Didn’t prepare well for his life in Samoa.</label><br>
+      </div>
+      </div>
+      
+      <div class="section-title">Questions 32-35</div>
+      <div class="instructions">Do the following statements agree with the information given in Reading Passage 3?</div>
+      <div class="instructions">In boxes 32-35 on your answer sheet, write:<br>
+        TRUE - if the statement agrees with the information<br>
+        FALSE - if the statement contradicts the information<br>
+        NOT GIVEN - if there is no information on this
+      </div>
+      
+      <div class="question-group">  
+        
+        <div class="question" id="q32">
+          <div class="question-title">
+            <div class="question-number">32</div>
+            <div class="question-text">
+              Although Oscar Wilde admired Robert Louis Stevenson very much, he believed Stevenson could have written greater works.
+            </div>
+          </div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q32" value="TRUE"> TRUE
+            </label>
+            <label class="option">
+              <input type="radio" name="q32" value="FALSE"> FALSE
+            </label>
+            <label class="option">
+              <input type="radio" name="q32" value="NOT GIVEN"> NOT GIVEN
+            </label>
+          </div>
+        </div>
+        
+        <div class="question" id="q33">
+          <div class="question-title">
+            <div class="question-number">33</div>
+            <div class="question-text">
+              Robert Louis Stevenson encouraged Oscar Wilde to start writing at first.
+            </div>
+          </div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q33" value="TRUE"> TRUE
+            </label>
+            <label class="option">
+              <input type="radio" name="q33" value="FALSE"> FALSE
+            </label>
+            <label class="option">
+              <input type="radio" name="q33" value="NOT GIVEN"> NOT GIVEN
+            </label>
+          </div>
+        </div>
+        
+        <div class="question" id="q34">
+          <div class="question-title">
+            <div class="question-number">34</div>
+            <div class="question-text">
+              Galsworthy thought Hardy is greater writer than Stevenson is.
+            </div>
+          </div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q34" value="TRUE"> TRUE
+            </label>
+            <label class="option">
+              <input type="radio" name="q34" value="FALSE"> FALSE
+            </label>
+            <label class="option">
+              <input type="radio" name="q34" value="NOT GIVEN"> NOT GIVEN
+            </label>
+          </div>
+        </div>
+        
+        <div class="question" id="q35">
+          <div class="question-title">
+            <div class="question-number">35</div>
+            <div class="question-text">
+              Critics only paid attention to Robert Louis Stevenson's writing topics.
+            </div>
+          </div>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q35" value="TRUE"> TRUE
+            </label>
+            <label class="option">
+              <input type="radio" name="q35" value="FALSE"> FALSE
+            </label>
+            <label class="option">
+              <input type="radio" name="q35" value="NOT GIVEN"> NOT GIVEN
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="section-title">Questions 36-40</div>
+      <div class="instructions">Complete the notes using the list of words, A-I, below.</div>
+      
+      <p style="text-align:center; font-weight: bold !important;"><b>Sir Walter Scott and Robert Louis Stevenson</b></p>
+
+
+         
+      <p>
+        A lot of people believe that Sir Walter Scott and Robert Louis Stevenson are the most influential writers
+        in the history of Scotland, but Sir Walter Scott is more proficient in 
+        <select name="q36" id="q36">
+          <option value="">36. Select...</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+          <option value="H">H</option>
+          <option value="I">I</option>
+        </select>,
+        while Stevenson has better
+        <select name="q37" id="q37">
+          <option value="">37. Select...</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+          <option value="H">H</option>
+          <option value="I">I</option>
+        </select>.
+        Scott’s books illustrate
+        <select name="q38" id="q38">
+          <option value="">38. Select...</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+          <option value="H">H</option>
+          <option value="I">I</option>
+        </select>,
+        especially in terms of tragedy, but a lot of readers prefer Stevenson’s
+        <select name="q39" id="q39">
+          <option value="">39. Select...</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+          <option value="H">H</option>
+          <option value="I">I</option>
+        </select>.
+        What’s more, Stevenson’s understanding of
+        <select name="q40" id="q40">
+          <option value="">40. Select...</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+          <option value="H">H</option>
+          <option value="I">I</option>
+        </select>
+        made his works have the most unique expression of Scottish people.
+      </p>
+      
+      <!-- A–I Wordlist -->
+      <div class="wordlist">
+        <div><strong>A.</strong> Natural ability</div>
+        <div><strong>B.</strong> Romance</div>
+        <div><strong>C.</strong> Colorful language</div>
+        <div><strong>D.</strong> Critical acclaim</div>
+        <div><strong>E.</strong> Humor</div>
+        <div><strong>F.</strong> Technical control</div>
+        <div><strong>G.</strong> Storytelling</div>
+        <div><strong>H.</strong> Depth</div>
+        <div><strong>I.</strong> Human nature</div>
+      </div>
+      
+      <style>
+        .section-title{font-weight:600;margin:8px 0 6px}
+        .passage-subtitle{margin:4px 0 10px}
+        .wordlist{
+          display:grid;
+          grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+          gap:6px; margin-top:12px
+        }
+        select{min-width:160px;margin:0 3px;}
+      </style>
+      
+
+
+  </div>
+</main>
+<footer>
+<div class="progress-container" id="progress-container">
+</div>
+<div class="action-buttons">
+<button class="btn-secondary" id="reset-btn">Reset Answers</button>
+<button class="btn-primary" id="submit-btn">Submit Answers</button>
+</div>
+</footer>
+<div class="feedback-overlay" id="feedback-overlay">
+<div class="feedback-container" id="feedback-container">
+<div class="feedback-header">
+<div class="feedback-title">
+<i class="fas fa-chart-bar"></i> Your Results
+                    <span class="score-display" id="score-display">0/14</span>
+</div>
+<button id="close-feedback" title="Close"><i class="fas fa-times"></i></button>
+</div>
+<div class="feedback-body" id="feedback-body">
+</div>
+</div>
+</div>
+<!-- 
+    This test interface was developed by Shahriyor Jo'rayev
+    Telegram: @realexamielts
+-->
+<script>
+// Modified highlight logic with color picker and remove functionality
+let highlightTooltip = null;
+let selectedRange = null;
+
+function createColorPicker(x, y, applyColorCallback) {
+    const colors = ["lightgreen", "yellow", "lightskyblue"];
+    const picker = document.createElement("div");
+    picker.className = "highlight-tooltip";
+    picker.style.top = `${y}px`;
+    picker.style.left = `${x}px`;
+    picker.style.position = "fixed";
+    picker.style.background = "#333";
+    picker.style.color = "white";
+    picker.style.padding = "5px 10px";
+    picker.style.borderRadius = "4px";
+    picker.style.zIndex = 1000;
+    picker.style.display = "flex";
+    colors.forEach(color => {
+        const btn = document.createElement("button");
+        btn.style.backgroundColor = color;
+        btn.style.border = "none";
+        btn.style.width = "20px";
+        btn.style.height = "20px";
+        btn.style.margin = "0 4px";
+        btn.style.borderRadius = "50%";
+        btn.title = `Highlight with ${color}`;
+        btn.addEventListener("click", () => {
+            applyColorCallback(color);
+            picker.remove();
+        });
+        picker.appendChild(btn);
+    });
+    document.body.appendChild(picker);
+    return picker;
+}
+
+function applyHighlight(color) {
+    if (!selectedRange) return;
+    const span = document.createElement("span");
+    span.className = "highlight";
+    span.style.backgroundColor = color;
+    span.setAttribute("data-color", color);
+    span.appendChild(selectedRange.extractContents());
+    selectedRange.insertNode(span);
+    selectedRange = null;
+    window.getSelection().removeAllRanges();
+
+    span.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (highlightTooltip) highlightTooltip.remove();
+        highlightTooltip = document.createElement("div");
+        highlightTooltip.className = "highlight-tooltip";
+        highlightTooltip.style.top = `${e.clientY}px`;
+        highlightTooltip.style.left = `${e.clientX}px`;
+        highlightTooltip.innerHTML = `<button style="color:white;background:red;border:none;padding:5px 10px;border-radius:4px;cursor:pointer;">Remove Highlight</button>`;
+        highlightTooltip.querySelector("button").addEventListener("click", function () {
+            const parent = span.parentNode;
+            while (span.firstChild) {
+                parent.insertBefore(span.firstChild, span);
+            }
+            parent.removeChild(span);
+            parent.normalize();
+            highlightTooltip.remove();
+        });
+        document.body.appendChild(highlightTooltip);
+    });
+}
+
+
+function handleMouseUp(e) {
+    const selection = window.getSelection();
+    if (selection.toString().trim() === '') return;
+    if (!e.currentTarget.contains(selection.anchorNode)) return;
+
+    selectedRange = selection.getRangeAt(0).cloneRange();
+    const rect = selectedRange.getBoundingClientRect();
+
+    if (highlightTooltip) highlightTooltip.remove();
+
+    highlightTooltip = createColorPicker(rect.left, rect.top - 40, applyHighlight);
+}
+
+document.getElementById('passage-text').addEventListener('mouseup', handleMouseUp);
+document.getElementById('questions-container').addEventListener('mouseup', handleMouseUp);
+
+document.addEventListener('mousedown', (e) => {
+    if (highlightTooltip && !highlightTooltip.contains(e.target)) {
+        highlightTooltip.remove();
+        highlightTooltip = null;
+        window.getSelection().removeAllRanges();
+    }
+});
+</script>
+<!-- 
+    This test interface was developed by Shahriyor Jo'rayev
+    Telegram: @realexamielts
+-->
+<script>
+// === Night Mode Toggle ===
+document.getElementById('night-mode-toggle').addEventListener('click', function () {
+    document.body.classList.toggle('night-mode');
+    const icon = this.querySelector('i');
+    if (document.body.classList.contains('night-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    }
+});
+
+// === Submit Answers (FIXED & CASE-INSENSITIVE) ===
+document.getElementById('submit-btn').addEventListener('click', function () {
+    const correctAnswers =   {         
+            q27: "D",
+            q28: "D",
+            q29: "B",
+            q30: "A",
+            q31: "C",
+            q32: "TRUE",
+            q33: "NOT GIVEN",
+            q34: "FALSE",
+            q35: "FALSE",
+            q36: "F",
+            q37: "A",
+            q38: "H",
+            q39: "G",
+            q40: "I"
+        };
+
+        const explanations = {
+  q27: "KF and CP deliberately avoided criticizing Stevenson’s personal life and instead concentrated on praising his writing style and skill. This means they elevated his role as a writer rather than diminishing it.",
+  q28: "The second paragraph describes how literary opinion shifted: after initial high praise, critics later claimed Stevenson’s works lacked moral value and dismissed them as children’s or horror stories. This shows that recent criticism has become more negative and judgmental.",
+  q29: "The passage says Stevenson mainly wrote adventure stories, which were entertaining but ‘ultimately can’t teach moral principles.’ This explains why adventure stories are seen as unable to convey deep moral lessons.",
+  q30: "The text notes that Stevenson’s works uniquely portrayed everyday Scottish life, but many critics argue that true literature should ‘transcend local culture and stories.’ Thus the author points out his works did not rise beyond local settings.",
+  q31: "The last paragraph states Stevenson’s personal life — his health issues, travel, and move to Samoa — drew so much attention that it eventually outshone his writing. This means his lifestyle attracted more focus than his works.",
+  q32: "Oscar Wilde is said to have admired Stevenson but joked he could have written better works if he had not been Scottish. This implies Wilde believed Stevenson could have produced greater works.",
+  q33: "The passage only says Wilde was influenced by Stevenson but does not state Stevenson encouraged Wilde to write. So the claim that Stevenson encouraged Wilde to start writing is not given.",
+  q34: "It says Galsworthy defended Stevenson and ‘claimed that Stevenson is a greater writer than Thomas Hardy,’ so the statement that Galsworthy thought Hardy was greater is false.",
+  q35: "The final paragraph explains critics also focused on Stevenson’s lifestyle and health, not just his writing topics. Thus the idea that critics only paid attention to his writing subjects is false.",
+  q36: "The text contrasts Sir Walter Scott’s technical depth with Stevenson’s natural storytelling talent, showing Scott was stronger in technical control.",
+  q37: "It then says Stevenson deserves recognition for his ‘natural ability to capture stories and characters,’ meaning he had greater natural ability.",
+  q38: "Scott’s works are described as having tragic themes and being taken seriously for their depth, indicating depth fits him best.",
+  q39: "Fans praise Stevenson’s unique storytelling style and his portrayal of human nature, showing readers prefer his storytelling.",
+  q40: "The passage concludes that Stevenson’s deep understanding of everyday Scottish life and human nature gave his works their unique Scottish character."
+};
+
+const passageReferences = {
+  q27: "Two biographers, KF and CP, wrote a biography ... They chose not to criticize aspects of Stevenson’s personal life. Instead, they focused on his writing, and gave high praise to his writing style and skill.",
+  q28: "It was like a complete reversal of polarity—from highly positive ... to clearly negative; ... his works were often excluded from the literature curriculum because of their controversial nature.",
+  q29: "One of the main reasons why Stevenson’s literary works attracted so much criticism was due to the genre of his writing. Stevenson mainly wrote adventure stories ... but ultimately can’t teach moral principles.",
+  q30: "Stevenson’s works, unlike other British authors, captured the unique day to day life of average Scottish people. Many literary critics point to this as a flaw ... truly important literature should transcend local culture and stories.",
+  q31: "It was as a result of this biographical attention that the feeling grew that interest in Stevenson’s life had taken the place of interest in his works.",
+  q32: "Though Stevenson’s works have deeply influenced Oscar Wilde, Wilde often joked that Stevenson would have written better works if he wasn’t born in Scotland.",
+  q33: "Though Stevenson influenced Oscar Wilde, the text does not say Stevenson encouraged Wilde to write.",
+  q34: "Other authors came to Stevenson’s defence, including Galsworthy who claimed that Stevenson is a greater writer than Thomas Hardy.",
+  q35: "Despite much debate of Stevenson’s writing topics, his writing was not the only source of attention for critics. Stevenson’s personal life often attracted a lot of attention from his fans and critics alike.",
+  q36: "While many critics exalt Sir Walter Scott as a literary genius because of his technical ability...",
+  q37: "…others argue that Stevenson deserves the same recognition for his natural ability to capture stories and characters in words.",
+  q38: "Many of Scott’s works were taken more seriously as literature for their depth due to their tragic themes...",
+  q39: "…fans of Stevenson praise his unique style of story-telling and capture of human nature.",
+  q40: "Stevenson’s works … captured the unique day to day life of average Scottish people … provide valuable insight to life in Scotland during the 19th century."
+};
+
+
+
+let score = 0;
+  let total = 0;
+  let feedbackHTML = "";
+
+  for (const [qid, correctValue] of Object.entries(correctAnswers)) {
+    total++;
+    let userAnswer = "";
+
+    // Avvalo name bo'yicha izlaymiz
+    const byName = document.getElementsByName(qid);
+    if (byName && byName.length) {
+      const first = byName[0];
+      if (first.tagName === "SELECT") {
+        userAnswer = first.value.trim();
+      } else if (first.type === "radio") {
+        for (const r of byName) if (r.checked) { userAnswer = r.value.trim(); break; }
+      } else if (first.type === "text") {
+        userAnswer = first.value.trim();
+      }
+    } else {
+      // Fallback: savol blokining ichidan izlash
+      const qEl = document.getElementById(qid);
+      if (qEl) {
+        const sel = qEl.querySelector("select");
+        const txt = qEl.querySelector("input[type='text']");
+        const rds = qEl.querySelectorAll("input[type='radio']");
+        if (sel) userAnswer = sel.value.trim();
+        else if (txt) userAnswer = txt.value.trim();
+        else if (rds.length) {
+          for (const r of rds) if (r.checked) { userAnswer = r.value.trim(); break; }
+        }
+      }
+    }
+
+    const isCorrect = userAnswer.toLowerCase() === correctValue.toLowerCase();
+    if (isCorrect) score++;
+
+    feedbackHTML += `
+      <div class="feedback-item">
+        <div class="feedback-question">Q${qid.replace("q","")}</div>
+        <div class="feedback-answer ${isCorrect ? "correct" : "incorrect"}">
+          Your Answer: ${userAnswer || "(no answer)"}<br/>
+          ${isCorrect ? "✔ Correct" : `✘ Incorrect (Correct: ${correctValue})`}
+        </div>
+        <div class="feedback-explanation"><strong>Explanation:</strong> ${explanations[qid] || ""}</div>
+        <div class="feedback-passage"><strong>Relevant passage:</strong> ${passageReferences[qid] || ""}</div>
+      </div>`;
+  }
+
+  document.getElementById("feedback-body").innerHTML = feedbackHTML;
+  document.getElementById("score-display").textContent = `${score}/${total}`;
+  document.getElementById("feedback-overlay").style.display = "flex";
+});
+
+document.getElementById('close-feedback').addEventListener('click', function () {
+  document.getElementById("feedback-overlay").style.display = "none";
+});
+
+// Reset -> progressni ham yangilab yuboramiz
+document.getElementById('reset-btn').addEventListener('click', function () {
+  document.querySelectorAll("select").forEach(sel => sel.value = "");
+  document.querySelectorAll("input[type='radio']").forEach(r => r.checked = false);
+  document.querySelectorAll("input[type='text']").forEach(t => t.value = "");
+  document.querySelectorAll('.progress-item.completed').forEach(i => i.classList.remove('completed'));
+  updateProgressStatus?.();
+});
+</script>
+<!-- 
+    This test interface was developed by Shahriyor Jo'rayev
+    Telegram: @realexamielts
+-->
+<script>
+function initializeProgressTracker() {
+  const progressContainer = document.getElementById("progress-container");
+  progressContainer.innerHTML = "";
+
+  // Sahifadagi q** idli barcha elementlarni topamiz (question bloklar + inline selectlar)
+  const nodes = Array.from(document.querySelectorAll('[id^="q"]'))
+    .map(el => {
+      const m = el.id.match(/^q(\d+)$/);
+      return m ? { id: el.id, number: parseInt(m[1], 10) } : null;
+    })
+    .filter(Boolean)
+    .sort((a, b) => a.number - b.number);
+
+  // Pufakchalarni chizamiz
+  nodes.forEach(({ id, number }) => {
+    const item = document.createElement("div");
+    item.className = "progress-item";
+    item.textContent = number;
+    item.dataset.qid = id;
+
+    item.addEventListener("click", () => {
+      const container = document.getElementById("questions-container");
+      const target = document.getElementById(id);
+      if (!target) return;
+      // ichki konteynerda silliq skroll
+      if (container) {
+        const top = target.offsetTop - 12;
+        container.scrollTo({ top, behavior: "smooth" });
+      } else {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+
+    progressContainer.appendChild(item);
+  });
+}
+
+
+function updateProgressStatus() {
+  document.querySelectorAll(".progress-item").forEach(item => {
+    const qid = item.dataset.qid;
+    const el = document.getElementById(qid);
+    if (!el) return;
+
+    let answered = false;
+
+    if (el.tagName === "SELECT") {
+      // Inline select (36–40) — elementning o‘zi select
+      answered = el.value !== "";
+    } else {
+      // Oddiy .question konteyneri
+      const sel = el.querySelector("select");
+      const txt = el.querySelector("input[type='text']");
+      const rds = el.querySelectorAll("input[type='radio']");
+      if (sel && sel.value !== "") answered = true;
+      else if (txt && txt.value.trim() !== "") answered = true;
+      else if (rds.length) answered = Array.from(rds).some(r => r.checked);
+    }
+
+    item.classList.toggle("completed", answered);
+
+    // .question bo'lsa raqam doirasini ham yashilsin
+    if (el.classList) {
+      el.classList.toggle("answered", answered);
+    } else {
+      // Inline selectlarda yaqin .question yo‘q — faqat progress pufakchalari bo‘yaladi
+    }
+  });
+}
+
+document.addEventListener("change", updateProgressStatus);
+document.addEventListener("DOMContentLoaded", () => {
+  initializeProgressTracker();
+  updateProgressStatus();
+});
+
+
+
+
+document.addEventListener("change", updateProgressStatus);
+document.addEventListener("DOMContentLoaded", () => {
+    initializeProgressTracker();
+    updateProgressStatus();
+});
+</script>
+
+<script>
+// === Timer Functionality ===
+let timerInterval;
+let timeRemaining = 20 * 60; // 20 minutes
+
+function updateTimerDisplay() {
+    const minutes = Math.floor(timeRemaining / 60).toString().padStart(2, '0');
+    const seconds = (timeRemaining % 60).toString().padStart(2, '0');
+    document.getElementById("timer").textContent = `${minutes}:${seconds}`;
+}
+
+document.getElementById("start-timer").addEventListener("click", () => {
+    if (timerInterval) return;
+    timerInterval = setInterval(() => {
+        if (timeRemaining > 0) {
+            timeRemaining--;
+            updateTimerDisplay();
+        } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            alert("Time is up!");
+        }
+    }, 1000);
+});
+
+document.getElementById("pause-timer").addEventListener("click", () => {
+    clearInterval(timerInterval);
+    timerInterval = null;
+});
+
+document.getElementById("reset-timer").addEventListener("click", () => {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    timeRemaining = 20 * 60;
+    updateTimerDisplay();
+});
+
+document.addEventListener("DOMContentLoaded", updateTimerDisplay);
+</script>
+
+<script>
+(function() {
+  function setDynamicHeights() {
+    var header = document.querySelector('header');
+    var footer = document.querySelector('footer');
+    if (!header || !footer) return;
+    var headerH = header.offsetHeight || 0;
+    var footerH = footer.offsetHeight || 0;
+    document.documentElement.style.setProperty('--header-dyn-height', headerH + 'px');
+    document.documentElement.style.setProperty('--footer-dyn-height', footerH + 'px');
+    document.documentElement.style.setProperty('--main-dyn-height', 'calc(100vh - ' + headerH + 'px - ' + footerH + 'px)');
+  }
+  window.addEventListener('load', setDynamicHeights);
+  window.addEventListener('resize', setDynamicHeights);
+  // Also recalc after potential font/icons load
+  setTimeout(setDynamicHeights, 300);
+})();
+</script>
+
+</body>
+<!-- 
+    This test interface was developed by Shahriyor Jo'rayev
+    Telegram: @realexamielts
+-->
+</html>

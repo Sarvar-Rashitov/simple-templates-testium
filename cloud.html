@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Reading Test - When Maps were Made for the Public</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --text-color: #1e293b;
+            --bg-light: #f9fafb;
+            --border-color: #d1d5db;
+            --instruction-bg: #e6f0fa;
+            --instruction-color: #333333;
+            --logo-color: #C1121F;
+        }
+        .main-title {
+            text-align: center;
+            font-size: 1.75rem;
+            margin: 1.5rem 0;
+            font-family: Arial,sans-serif;
+            color: var(--text-color);
+            line-height: 1.4;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            background: radial-gradient(800px 400px at 10% 0%, #e0f2fe, transparent),
+                        radial-gradient(800px 400px at 90% 100%, #dbeafe, transparent),
+                        #f0f9ff;
+            color: var(--text-color);
+            overflow: hidden;
+        }
+        .test-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .test-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        .header__logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--logo-color);
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+        .header__logo:hover {
+            filter: brightness(1.1);
+            transform: scale(1.05);
+        }
+        .header__timer {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            background: #eff6ff;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            border: 1px solid var(--primary-color);
+        }
+        .header__icons {
+            display: flex;
+            gap: 1rem;
+        }
+        .header__icon {
+            font-size: 1.25rem;
+            color: #4b5563;
+            cursor: pointer;
+        }
+        .header__icon:hover {
+            color: var(--primary-color);
+            transform: scale(1.15);
+        }
+        .settings-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .settings-content {
+            background: #ffffff;
+            width: 90%;
+            max-width: 28rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .settings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(90deg, var(--primary-color), #1e40af);
+            color: #ffffff;
+        }
+        .settings-header h2 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        .settings-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ffffff;
+        }
+        .settings-close:hover {
+            color: #fed7e2;
+        }
+        .settings-body {
+            padding: 1rem;
+            background: var(--bg-light);
+        }
+        .settings-option {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+        .settings-option:hover {
+            background: #eff6ff;
+        }
+        .settings-option:last-child {
+            border-bottom: none;
+        }
+        .settings-option i {
+            margin-right: 0.5rem;
+            width: 1rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+        .settings-option span {
+            font-size: 1rem;
+        }
+        .sectionRubric {
+            margin: 1rem;
+            padding: 1rem;
+            background: var(--instruction-bg);
+            color: var(--instruction-color);
+            font-family: Arial, sans-serif;
+            margin-bottom: 1.5rem;
+            border-radius: 0.75rem;
+        }
+        .sectionRubric h2 {
+            font-size: 1.1rem;
+            color: var(--instruction-color);
+            margin-bottom: 0.5rem;
+        }
+        .passage-container {
+            width: 45%;
+            height: 100%;
+            overflow-y: auto;
+            padding: 1rem;
+            box-sizing: border-box;
+            background: var(--bg-light);
+            border-right: 1px solid var(--border-color);
+            user-select: text;
+            -webkit-user-select: text;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            font-family: Arial, sans-serif;
+        }
+        .passage-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .passage-container::-webkit-scrollbar-track {
+            background: var(--border-color);
+        }
+        .passage-container::-webkit-scrollbar-thumb {
+            background: #6b7280;
+            border-radius: 4px;
+        }
+        .passage-content p {
+            margin-bottom: 1rem;
+        }
+        .questions-container {
+            flex: 1;
+            height: 100%;
+            overflow-y: auto;
+            padding: 1rem;
+            box-sizing: border-box;
+            background: var(--bg-light);
+            user-select: text;
+            -webkit-user-select: text;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            font-family: Arial, sans-serif;
+        }
+        .questions-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .questions-container::-webkit-scrollbar-track {
+            background: var(--border-color);
+        }
+        .questions-container::-webkit-scrollbar-thumb {
+            background: #6b7280;
+            border-radius: 4px;
+        }
+        .highlight {
+            border-radius: 0.25rem;
+            padding: 0 0.25rem;
+        }
+        .highlight.green { background: rgba(0, 100, 0, 0.5); }
+        .highlight.red { background: rgba(139, 0, 0, 0.5); }
+        .highlight-toolbar {
+            position: fixed;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            display: none;
+            z-index: 1000;
+            padding: 0.5rem;
+            transform: translate(-50%, -100%);
+            margin-top: -0.5rem;
+        }
+        .highlight-toolbar button {
+            background: none;
+            border: none;
+            width: 2.5rem;
+            height: 2.5rem;
+            cursor: pointer;
+            border-radius: 0.25rem;
+        }
+        .highlight-toolbar button:hover {
+            background: #eff6ff;
+            transform: scale(1.1);
+        }
+        .highlight-toolbar button.remove {
+            color: #ef4444;
+        }
+        .divider {
+            width: 8px;
+            background: var(--border-color);
+            cursor: col-resize;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .divider-handle {
+            width: 6px;
+            height: 60px;
+            background: #6b7280;
+            border-radius: 4px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .question {
+            margin-bottom: 1.5rem;
+            background: #ffffff;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            font-family: Arial, sans-serif;
+            transition: box-shadow 0.3s ease;
+        }
+        .question:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        .question-rubric {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: var(--instruction-bg);
+            color: var(--instruction-color);
+            font-family: Arial, sans-serif;
+            border-radius: 0.75rem;
+        }
+        .question-rubric p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .question-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .question-item {
+            display: flex;
+            flex-direction: column;  /* Stack main elements */
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        .question-text-wrapper {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 0.5rem;
+            width: 100%;
+        }
+        .question-number {
+            font-weight: 700;
+            min-width: 2rem;
+            text-align: left;
+        }
+        .question-text {
+            flex: 1;
+        }
+        .answer-input {
+            border: 1px solid var(--border-color);
+            border-radius: 0.375rem;
+            padding: 0.5rem 0.75rem;
+            width: 100%;
+            max-width: 18rem;
+            font-size: 0.95rem;
+            font-family: Arial, sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .answer-input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        .inline-input {
+            width: 180px;
+            height: 28px;
+            display: inline-block;
+            margin: 0 5px;
+        }
+        .dropdown-container {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 1rem;
+        }
+        .dropdown-select {
+            appearance: none;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 0.375rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.95rem;
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.3s ease;
+        }
+        .dropdown-select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        .dropdown-select option:checked {
+            background: #dbeafe;
+            color: var(--text-color);
+        }
+        .footer {
+            background: #ffffff;
+            border-top: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.05);
+            z-index: 50;
+        }
+        .footer__nav {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .subQuestion {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 50%;
+            background: var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            font-family: Arial, sans-serif;
+            transition: all 0.2s ease;
+        }
+        .subQuestion:hover {
+            background: #dbeafe;
+            transform: scale(1.1);
+        }
+        .subQuestion.active {
+            background: var(--primary-color);
+            color: #ffffff;
+            border-color: #1e40af;
+        }
+        .subQuestion.attempted {
+            background: #bbf7d0;
+            color: #166534;
+            border-color: #86efac;
+        }
+        .subQuestion.correct {
+            background: #dcfce7;
+            color: #166534;
+            border-color: #86efac;
+        }
+        .subQuestion.incorrect {
+            background: #fee2e2;
+            color: #991b1b;
+            border-color: #fca5a5;
+        }
+        .footer__actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            min-width: 4rem;
+            min-height: 2.5rem;
+            font-family: Arial, sans-serif;
+            transition: all 0.2s ease;
+        }
+        .btn-prev, .btn-next {
+            background: #f3f4f6;
+            color: #4b5563;
+            border: 1px solid var(--border-color);
+        }
+        .btn-prev:hover, .btn-next:hover {
+            background: #e5e7eb;
+            border-color: #9ca3af;
+        }
+        .btn-submit {
+            background: #22c55e;
+            color: #ffffff;
+            border: none;
+        }
+        .btn-submit:hover {
+            background: #16a34a;
+            box-shadow: 0 4px 8px rgba(34, 197, 94, 0.3);
+        }
+        .results-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .results-content {
+            background: #ffffff;
+            width: 90%;
+            max-width: 24rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .results-header {
+            padding: 1rem 1.5rem;
+            background: linear-gradient(90deg, #22c55e, #15803d);
+            color: #ffffff;
+            text-align: center;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+        .results-header h2 {
+            margin: 0;
+            font-size: 1.25rem;
+        }
+        .results-score {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+        }
+        .results-body {
+            padding: 1rem 1.5rem;
+            text-align: center;
+        }
+        .results-body p {
+            margin-bottom: 0.75rem;
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+        .results-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            padding: 0 1.5rem 1.5rem;
+        }
+        .btn-close, .btn-review {
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            min-height: 2.5rem;
+            transition: all 0.2s ease;
+        }
+        .btn-close {
+            background: #f3f4f6;
+            color: #4b5563;
+            border: 1px solid var(--border-color);
+        }
+        .btn-close:hover {
+            background: #e5e7eb;
+        }
+        .btn-review {
+            background: var(--primary-color);
+            color: #ffffff;
+            border: none;
+        }
+        .btn-review:hover {
+            background: #2563eb;
+            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+        }
+        .answer-indicator {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-family: Arial, sans-serif;
+        }
+        .answer-indicator.correct {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #86efac;
+        }
+        .answer-indicator.incorrect {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+        .answer-indicator i {
+            font-size: 1rem;
+        }
+
+        /* ==================== TABLET RESPONSIVE (768px) ==================== */
+        @media (max-width: 768px) {
+            .test-container {
+                flex-direction: column;
+            }
+            .passage-container {
+                width: 100%;
+                height: 50%;
+                border-right: none;
+                border-bottom: 5px solid var(--bg-light);
+            }
+            .questions-container {
+                width: 100%;
+                height: 50%;
+            }
+            .divider,
+            .divider-handle {
+                display: none !important;
+            }
+            .main-title {
+                font-size: 1.5rem;
+            }
+            .header__logo {
+                font-size: 2rem;
+            }
+            .header__timer {
+                font-size: 1rem;
+                padding: 0.5rem 1rem;
+            }
+            .header__icon {
+                font-size: 1.1rem;
+            }
+            .sectionRubric {
+                margin: 0.5rem;
+                padding: 0.75rem;
+                margin-bottom: 1rem;
+            }
+            .sectionRubric h2 {
+                font-size: 1rem;
+            }
+            .question {
+                margin-bottom: 1rem;
+                padding: 0.75rem;
+            }
+            .question:hover {
+                box-shadow: none;
+            }
+            .question-rubric {
+                padding: 0.5rem;
+                margin-bottom: 0.75rem;
+            }
+            .question-rubric p {
+                font-size: 0.9rem;
+            }
+            .question-text, .dropdown-select {
+                font-size: 0.9rem;
+            }
+            .inline-input {
+                width: 100%;
+                max-width: 100%;
+                height: 32px;
+            }
+            .subQuestion {
+                width: 2rem;
+                height: 2rem;
+                font-size: 0.9rem;
+            }
+            .subQuestion:hover {
+                transform: none;
+            }
+            .btn {
+                font-size: 0.9rem;
+                padding: 0.5rem;
+                min-height: 2.75rem;
+            }
+            .settings-content, .results-content {
+                width: 95%;
+                max-width: 20rem;
+                max-height: 70vh;
+            }
+            .settings-header h2, .results-header h2 {
+                font-size: 1rem;
+            }
+            .settings-option span, .results-body p {
+                font-size: 0.9rem;
+            }
+            .highlight-toolbar button {
+                width: 2.75rem;
+                height: 2.75rem;
+            }
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+            }
+            .footer__nav {
+                justify-content: center;
+            }
+        }
+
+        /* ==================== LANDSCAPE MOBILE SUPPORT ==================== */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .test-container {
+                flex-direction: row;
+            }
+            .passage-container {
+                width: 50%;
+                height: 100%;
+                border-right: 1px solid var(--border-color);
+                border-bottom: none;
+            }
+            .questions-container {
+                width: 50%;
+                height: 100%;
+            }
+        }
+
+        /* ==================== MOBILE IMPROVEMENTS (480px) ==================== */
+        @media (max-width: 480px) {
+            /* Header improvements */
+            .header {
+                padding: 0.5rem;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+            }
+            .header__logo {
+                font-size: 1.5rem;
+            }
+            .header__timer {
+                font-size: 0.85rem;
+                padding: 0.35rem 0.75rem;
+                min-width: 70px;
+            }
+            .header__icon {
+                font-size: 1rem;
+            }
+
+            /* Main title */
+            .main-title {
+                font-size: 1.25rem;
+            }
+
+            /* Section rubric */
+            .sectionRubric {
+                margin: 0.4rem;
+                padding: 0.6rem;
+                margin-bottom: 0.75rem;
+            }
+
+            /* Questions */
+            .question {
+                padding: 0.6rem;
+            }
+            .question-rubric p {
+                font-size: 0.85rem;
+            }
+            .question-text, .dropdown-select {
+                font-size: 0.85rem;
+            }
+
+            /* Question items - STACK VERTICALLY */
+            .question-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .question-text-wrapper {
+                display: flex;
+                flex-direction: row;  /* Keep number + text together */
+                gap: 0.5rem;
+            }
+
+            /* Inline inputs - FULL WIDTH */
+            .inline-input {
+                width: 100%;
+                max-width: 100%;
+                height: 30px;
+                margin: 0.25rem 0;
+                display: block;
+            }
+
+            .question-number {
+                margin-bottom: 0.25rem;
+            }
+
+            /* Better touch targets for question navigation */
+            .subQuestion {
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 0.9rem;
+            }
+
+            /* Footer improvements */
+            .footer {
+                padding: 0.75rem 0.5rem;
+                gap: 0.75rem;
+            }
+
+            .footer__actions {
+                width: 100%;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 0.75rem;
+                min-height: 2.75rem;
+                font-size: 0.85rem;
+            }
+
+            /* Better tap feedback */
+            .btn:active,
+            .subQuestion:active {
+                transform: scale(0.95);
+                opacity: 0.9;
+            }
+
+            /* Modal improvements */
+            .settings-content,
+            .results-content {
+                width: 96%;
+                max-height: 85vh;
+                margin: 0.5rem;
+            }
+
+            .results-score {
+                font-size: 1.75rem;
+            }
+
+            /* Text size adjustments */
+            .passage-content p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+
+            .question-content,
+            .question-rubric {
+                font-size: 0.9rem;
+            }
+
+            #passageContent {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ==================== EXTRA SMALL MOBILE (400px) ==================== */
+        @media (max-width: 400px) {
+            .header__logo {
+                font-size: 1.25rem;
+            }
+            .header__timer {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.6rem;
+            }
+            .subQuestion {
+                width: 2.25rem;
+                height: 2.25rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" defer>
+    <script src="https://cdn.tailwindcss.com" defer></script>
+</head>
+<body>
+    <div class="test-wrapper">
+        <header class="header">
+            <div class="header__logo">CD IELTS</div>
+            <div class="header__timer" id="timer">20:00</div>
+            <div class="header__icons">
+                <i class="fas fa-cog header__icon" id="settingsToggle" title="Settings"></i>
+            </div>
+        </header>
+
+        <div class="test-container">
+            <div class="passage-container">
+                <div class="sectionRubric">
+                    <h2>Reading Passage</h2>
+                    <p>You should spend about 20 minutes on <strong>Questions 1-13</strong>, which are based on the Reading Passage below.</p>
+                </div>
+                <div class="main-title text-center text-xl font-bold text-gray-800">When Maps were Made for the Public</div>
+                <div id="passageContent" class="passage-content">
+                    <p>Since the art of map-making began, maps have largely been made for explorers, academics, and rulers. It wasn't until the 19th century that the general public began to demand maps for themselves. More than anything else, it was the appeal of travel to ordinary people that encouraged publishing companies to begin creating and printing more maps than ever before, in order to meet the demand of their new market.</p> 
+                    <p>In the years after the American Civil War (1861-65), the rapidly growing US railroad system had so many independent rail companies, schedules, and destinations that maps were critical for planning a person's journey. One publisher, Rand McNally, made a fortune from producing railway maps for different parts of the USA, combined with a timetable and many descriptions of scenery and towns in the same booklet.</p>
+                    
+                </div>
+            </div>
+
+            <div class="divider" id="divider">
+                <div class="divider-handle"></div>
+            </div>
+
+            <div class="questions-container">
+                <div class="question">
+                    <div class="question-rubric">
+                        <p><strong>Questions 1 – 6</strong></p>
+                        <p>Complete the notes below.</p>
+                        <p>Choose ONE WORD ONLY from the passage for each answer.</p>
+                        <p>Write your answers in boxes 1-6 on your answer sheet.</p>
+                    </div>
+                    <div class="question-content">
+                        <p>The development of maps from the 19th century onwards</p>
+                        <ul>
+                            <li>a growing interest in travel led to the increased production of maps in the 19th century</li>
+                        </ul>
+                        <p>After 1865:</p>
+                        <ul>
+                            <li>Rand McNally made a lot of money by putting a map and a <span class="question-number">1</span><input type="text" name="q1" id="q1" class="answer-input inline-input"> in one publication</li>
+                        </ul>
+                        <p>After 1880:</p>
+                        <ul>
+                            <li>George Philip produced maps that could not be damaged by water</li>
+                            <li>George Blum's cycling map showed</li>
+                            <li>the kind of <span class="question-number">2</span><input type="text" name="q2" id="q2" class="answer-input inline-input"> the paths had</li>
+                            <li>how steep the paths might be</li>
+                        </ul>
+                        <p>1900 onwards:</p>
+                        <ul>
+                            <li>André Michelin's guide provided information about</li>
+                            <li>finding economical <span class="question-number">3</span><input type="text" name="q3" id="q3" class="answer-input inline-input"></li>
+                            <li>what to do if your car broke down</li>
+                            <li>the Michelin guide became popular mainly because it helped people select a <span class="question-number">4</span><input type="text" name="q4" id="q4" class="answer-input inline-input"></li>
+                        </ul>
+                        <p>1917 onwards:</p>
+                        <ul>
+                            <li>Rand McNally</li>
+                            <li>the company's Auto Trails Maps helped people explore roads through a particular <span class="question-number">5</span><input type="text" name="q5" id="q5" class="answer-input inline-input"> of the USA</li>
+                            <li>the company was also responsible for giving <span class="question-number">6</span><input type="text" name="q6" id="q6" class="answer-input inline-input"> to American roads</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-rubric">
+                        <p><strong>Questions 7 – 13</strong></p>
+                        <p>Do the following statements agree with the information given in Reading Passage 1?</p>
+                        <p>In boxes 7-13 on your answer sheet, select</p>
+                        <p><strong>TRUE</strong> if the statement agrees with the information</p>
+                        <p><strong>FALSE</strong> if the statement contradicts the information</p>
+                        <p><strong>NOT GIVEN</strong> if there is no information on this</p>
+                    </div>
+                    <div class="question-content">
+                        <div class="question-item">
+                            <div class="question-text-wrapper">
+                                <span class="question-number">7</span>
+                                <span class="question-text">The Touraide was organised according to the particular needs of each traveller.</span>
+                                <div class="dropdown-container" data-name="q7">
+                                    <select class="dropdown-select" name="q7">
+                                        <option value="">Select</option>
+                                        <option value="TRUE">TRUE</option>
+                                        <option value="FALSE">FALSE</option>
+                                        <option value="NOT GIVEN">NOT GIVEN</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text-wrapper">
+                                <span class="question-number">8</span>
+                                <span class="question-text">It was the high price of oil that stopped free maps being given out to the public.</span>
+                                <div class="dropdown-container" data-name="q8">
+                                    <select class="dropdown-select" name="q8">
+                                        <option value="">Select</option>
+                                        <option value="TRUE">TRUE</option>
+                                        <option value="FALSE">FALSE</option>
+                                        <option value="NOT GIVEN">NOT GIVEN</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text-wrapper">
+                                <span class="question-number">9</span>
+                                <span class="question-text">In the 1920s, maps for pilots helped improve safety records for flights.</span>
+                                <div class="dropdown-container" data-name="q9">
+                                    <select class="dropdown-select" name="q9">
+                                        <option value="">Select</option>
+                                        <option value="TRUE">TRUE</option>
+                                        <option value="FALSE">FALSE</option>
+                                        <option value="NOT GIVEN">NOT GIVEN</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text-wrapper">
+                                <span class="question-number">10</span>
+                                <span class="question-text">People found the early maps of the London Underground easy to read.</span>
+                                <div class="dropdown-container" data-name="q10">
+                                    <select class="dropdown-select" name="q10">
+                                        <option value="">Select</option>
+                                        <option value="TRUE">TRUE</option>
+                                        <option value="FALSE">FALSE</option>
+                                        <option value="NOT GIVEN">NOT GIVEN</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text-wrapper">
+                                <span class="question-number">11</span>
+                                <span class="question-text">Harry Beck had previous experience of map-making when he produced a map of the underground.</span>
+                                <div class="dropdown-container" data-name="q11">
+                                    <select class="dropdown-select" name="q11">
+                                        <option value="">Select</option>
+                                        <option value="TRUE">TRUE</option>
+                                        <option value="FALSE">FALSE</option>
+                                        <option value="NOT GIVEN">NOT GIVEN</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text-wrapper">
+                                <span class="question-number">12</span>
+                                <span class="question-text">Beck's first version of the underground map met with a positive reaction.</span>
+                                <div class="dropdown-container" data-name="q12">
+                                    <select class="dropdown-select" name="q12">
+                                        <option value="">Select</option>
+                                        <option value="TRUE">TRUE</option>
+                                        <option value="FALSE">FALSE</option>
+                                        <option value="NOT GIVEN">NOT GIVEN</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text-wrapper">
+                                <span class="question-number">13</span>
+                                <span class="question-text">Phyllis Pearsall was the first woman to produce a published map.</span>
+                                <div class="dropdown-container" data-name="q13">
+                                    <select class="dropdown-select" name="q13">
+                                        <option value="">Select</option>
+                                        <option value="TRUE">TRUE</option>
+                                        <option value="FALSE">FALSE</option>
+                                        <option value="NOT GIVEN">NOT GIVEN</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer__nav">
+                <div class="subQuestion" data-ordernumber="1">1</div>
+                <div class="subQuestion" data-ordernumber="2">2</div>
+                <div class="subQuestion" data-ordernumber="3">3</div>
+                <div class="subQuestion" data-ordernumber="4">4</div>
+                <div class="subQuestion" data-ordernumber="5">5</div>
+                <div class="subQuestion" data-ordernumber="6">6</div>
+                <div class="subQuestion" data-ordernumber="7">7</div>
+                <div class="subQuestion" data-ordernumber="8">8</div>
+                <div class="subQuestion" data-ordernumber="9">9</div>
+                <div class="subQuestion" data-ordernumber="10">10</div>
+                <div class="subQuestion" data-ordernumber="11">11</div>
+                <div class="subQuestion" data-ordernumber="12">12</div>
+                <div class="subQuestion" data-ordernumber="13">13</div>
+            </div>
+            <div class="footer__actions">
+                <!-- <button class="btn btn-prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <button class="btn btn-next" id="nextBtn"><i class="fas fa-chevron-right"></i></button> -->
+                <button class="btn btn-submit" id="submitBtn">Submit</button>
+            </div>
+        </footer>
+    </div>
+
+    <div class="settings-modal" id="settingsModal">
+        <div class="settings-content">
+            <div class="settings-header">
+                <h2>Settings</h2>
+                <button class="settings-close" id="settingsClose">&times;</button>
+            </div>
+            <div class="settings-body">
+                <div class="settings-option" id="contrastOption">
+                    <i class="fas fa-moon"></i>
+                    <span>Toggle Dark Mode</span>
+                </div>
+                <div class="settings-option" id="textSizeOption">
+                    <i class="fas fa-text-height"></i>
+                    <span>Change Text Size</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="results-modal" id="resultsModal">
+        <div class="results-content">
+            <div class="results-header">
+                <h2>Your Results</h2>
+                <p class="results-score" id="scoreDisplay">0/13</p>
+            </div>
+            <div class="results-body">
+                <p>Well done on completing the test!</p>
+                <p>Would you like to review your answers?</p>
+            </div>
+            <div class="results-actions">
+                <button class="btn-close" id="closeModalBtn">Close</button>
+                <button class="btn-review" id="reviewBtn">Review Answers</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="highlight-toolbar" id="highlightToolbar">
+        <button class="green" title="Green"><i class="fas fa-highlighter" style="color: #006400;"></i></button>
+        <button class="red" title="Red"><i class="fas fa-highlighter" style="color: #8b0000;"></i></button>
+        <button class="remove" title="Remove"><i class="fas fa-eraser"></i></button>
+    </div>
+
+    <script>
+        // Utility: Debounce function to limit event frequency
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Cache DOM elements
+        const DOM = {
+            timer: document.getElementById('timer'),
+            settingsToggle: document.getElementById('settingsToggle'),
+            settingsModal: document.getElementById('settingsModal'),
+            settingsClose: document.getElementById('settingsClose'),
+            highlightToolbar: document.getElementById('highlightToolbar'),
+            divider: document.getElementById('divider'),
+            passageContainer: document.querySelector('.passage-container'),
+            questionsContainer: document.querySelector('.questions-container'),
+            prevBtn: document.getElementById('prevBtn'),
+            nextBtn: document.getElementById('nextBtn'),
+            submitBtn: document.getElementById('submitBtn'),
+            resultsModal: document.getElementById('resultsModal'),
+            scoreDisplay: document.getElementById('scoreDisplay'),
+            closeModalBtn: document.getElementById('closeModalBtn'),
+            reviewBtn: document.getElementById('reviewBtn'),
+            highlightableAreas: document.querySelectorAll('.passage-container, .questions-container'),
+            questionButtons: document.querySelectorAll('.subQuestion'),
+            textInputs: document.querySelectorAll('input[type="text"]'),
+            dropdownSelects: document.querySelectorAll('.dropdown-select')
+        };
+
+        // Timer Functionality
+        let time = 20 * 60;
+        let timerInterval;
+
+        function updateTimer() {
+            const minutes = Math.floor(time / 60);
+            const seconds = time % 60;
+            DOM.timer.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            if (time > 0) {
+                time--;
+            } else {
+                clearInterval(timerInterval);
+                submitTest();
+            }
+            if (time <= 5 * 60) {
+                DOM.timer.style.color = '#ef4444';
+                DOM.timer.style.borderColor = '#f87171';
+            }
+        }
+
+        timerInterval = setInterval(updateTimer, 1000);
+
+        // Settings Modal
+        DOM.settingsToggle.addEventListener('click', () => {
+            DOM.settingsModal.style.display = 'flex';
+        });
+
+        DOM.settingsClose.addEventListener('click', () => {
+            DOM.settingsModal.style.display = 'none';
+        });
+
+        DOM.settingsModal.addEventListener('click', (e) => {
+            if (e.target === DOM.settingsModal) {
+                DOM.settingsModal.style.display = 'none';
+            }
+        });
+
+        // Highlight Functionality
+        let selectedRange = null;
+
+        function handleSelection(e) {
+            const selection = window.getSelection();
+            if (selection.rangeCount > 0 && !selection.isCollapsed) {
+                selectedRange = selection.getRangeAt(0);
+                const rect = selectedRange.getBoundingClientRect();
+                DOM.highlightToolbar.style.left = `${rect.left + rect.width / 2}px`;
+                DOM.highlightToolbar.style.top = `${rect.top + window.scrollY}px`;
+                DOM.highlightToolbar.style.display = 'flex';
+            } else {
+                DOM.highlightToolbar.style.display = 'none';
+            }
+        }
+
+        const debouncedHandleSelection = debounce(handleSelection, 100);
+
+        DOM.highlightableAreas.forEach(area => {
+            area.addEventListener('mouseup', debouncedHandleSelection);
+            area.addEventListener('touchend', debouncedHandleSelection);
+        });
+
+        DOM.highlightToolbar.addEventListener('click', (e) => {
+            if (e.target.closest('button') && selectedRange) {
+                const color = e.target.closest('button').classList[0];
+                if (color !== 'remove') {
+                    const span = document.createElement('span');
+                    span.classList.add('highlight', color);
+                    try {
+                        selectedRange.surroundContents(span);
+                    } catch (err) {
+                        console.log('Cannot highlight across elements');
+                    }
+                }
+                window.getSelection().removeAllRanges();
+                DOM.highlightToolbar.style.display = 'none';
+            }
+        });
+
+        document.querySelector('.highlight-toolbar .remove').addEventListener('click', () => {
+            if (selectedRange) {
+                const ancestor = selectedRange.commonAncestorContainer;
+                if (ancestor.nodeType === 3) {
+                    const parent = ancestor.parentNode;
+                    if (parent.classList.contains('highlight')) {
+                        const text = document.createTextNode(parent.textContent);
+                        parent.parentNode.replaceChild(text, parent);
+                    }
+                }
+                window.getSelection().removeAllRanges();
+                DOM.highlightToolbar.style.display = 'none';
+            }
+        });
+
+        // Divider Resize Functionality
+        let isDragging = false;
+
+        if (DOM.divider) {
+            DOM.divider.addEventListener('mousedown', (e) => {
+                if (window.innerWidth > 768) {
+                    isDragging = true;
+                    document.body.style.cursor = 'col-resize';
+                }
+            });
+
+            const debouncedResize = debounce((e) => {
+                if (!isDragging || window.innerWidth <= 768) return;
+                const containerRect = document.querySelector('.test-container').getBoundingClientRect();
+                const newWidth = ((e.clientX - containerRect.left) / containerRect.width) * 100;
+                if (newWidth >= 20 && newWidth <= 80) {
+                    DOM.passageContainer.style.width = `${newWidth}%`;
+                    DOM.questionsContainer.style.width = `${100 - newWidth}%`;
+                }
+            }, 10);
+
+            document.addEventListener('mousemove', debouncedResize);
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+                document.body.style.cursor = 'default';
+            });
+        }
+
+        // Mark questions as attempted
+        DOM.textInputs.forEach(input => {
+            input.addEventListener('input', () => {
+                const questionNumber = input.name.replace('q', '');
+                const questionButton = document.querySelector(`.subQuestion[data-ordernumber="${questionNumber}"]`);
+                if (questionButton && input.value) {
+                    questionButton.classList.add('attempted');
+                }
+            });
+        });
+
+        DOM.dropdownSelects.forEach(select => {
+            select.addEventListener('change', () => {
+                const questionNumber = select.name.replace('q', '');
+                const questionButton = document.querySelector(`.subQuestion[data-ordernumber="${questionNumber}"]`);
+                if (questionButton && select.value) {
+                    questionButton.classList.add('attempted');
+                }
+            });
+        });
+
+        // Text Size Functionality
+        let currentTextSize = 'normal';
+        const textSizes = {
+            small: '0.85rem',
+            normal: '1rem',
+            large: '1.1rem',
+            xlarge: '1.25rem'
+        };
+        const textSizeOrder = ['small', 'normal', 'large', 'xlarge'];
+
+        document.getElementById('textSizeOption').addEventListener('click', () => {
+            const currentIndex = textSizeOrder.indexOf(currentTextSize);
+            const nextIndex = (currentIndex + 1) % textSizeOrder.length;
+            currentTextSize = textSizeOrder[nextIndex];
+            const fontSize = textSizes[currentTextSize];
+            document.getElementById('passageContent').style.fontSize = fontSize;
+            document.querySelectorAll('.question-content, .question-rubric').forEach(el => {
+                el.style.fontSize = fontSize;
+            });
+        });
+
+        // Dark Mode Functionality
+        let isDarkMode = false;
+
+        document.getElementById('contrastOption').addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            const styles = {
+                body: {
+                    background: isDarkMode
+                        ? 'radial-gradient(800px 400px at 10% 0%, #1e293b, transparent), radial-gradient(800px 400px at 90% 100%, #0f172a, transparent), #111827'
+                        : 'radial-gradient(800px 400px at 10% 0%, #e0f2fe, transparent), radial-gradient(800px 400px at 90% 100%, #dbeafe, transparent), #f0f9ff',
+                    color: isDarkMode ? '#f9fafb' : '#1e293b'
+                },
+                header: {
+                    background: isDarkMode ? '#374151' : '#ffffff',
+                    borderBottomColor: isDarkMode ? '#4b5563' : '#d1d5db'
+                },
+                containers: {
+                    background: isDarkMode ? '#1f2937' : '#f9fafb',
+                    color: isDarkMode ? '#f9fafb' : '#1e293b'
+                },
+                question: {
+                    background: isDarkMode ? '#374151' : '#ffffff',
+                    color: isDarkMode ? '#f9fafb' : '#1e293b',
+                    borderColor: isDarkMode ? '#4b5563' : '#d1d5db'
+                },
+                footer: {
+                    background: isDarkMode ? '#374151' : '#ffffff',
+                    borderTopColor: isDarkMode ? '#4b5563' : '#d1d5db'
+                },
+                inputs: {
+                    background: isDarkMode ? '#374151' : '#ffffff',
+                    color: isDarkMode ? '#f9fafb' : '#1e293b',
+                    borderColor: isDarkMode ? '#6b7280' : '#d1d5db'
+                },
+                instruction: {
+                    background: isDarkMode ? '#2d3748' : '#e6f0fa',
+                    color: isDarkMode ? '#d1d5db' : '#333333'
+                },
+                settings: {
+                    background: isDarkMode ? '#1f2937' : '#f9fafb',
+                    color: isDarkMode ? '#f9fafb' : '#1e293b'
+                }
+            };
+
+            document.body.style.background = styles.body.background;
+            document.body.style.color = styles.body.color;
+            document.querySelector('.main-title').style.color = styles.body.color;
+            document.querySelector('.header').style.background = styles.header.background;
+            document.querySelector('.header').style.borderBottomColor = styles.header.borderBottomColor;
+            document.querySelectorAll('.passage-container, .questions-container').forEach(el => {
+                el.style.background = styles.containers.background;
+                el.style.color = styles.containers.color;
+            });
+            document.querySelectorAll('.question, .sectionRubric, .question-rubric').forEach(el => {
+                el.style.background = el.classList.contains('sectionRubric') || el.classList.contains('question-rubric')
+                    ? styles.instruction.background
+                    : styles.question.background;
+                el.style.color = el.classList.contains('sectionRubric') || el.classList.contains('question-rubric')
+                    ? styles.instruction.color
+                    : styles.question.color;
+                el.style.borderColor = el.classList.contains('question') ? styles.question.borderColor : 'transparent';
+            });
+            document.querySelectorAll('.sectionRubric h2, .question-rubric h2').forEach(el => {el.style.color = styles.instruction.color;});
+            document.querySelector('.footer').style.background = styles.footer.background;
+            document.querySelector('.footer').style.borderTopColor = styles.footer.borderTopColor;
+            document.querySelector('.settings-body').style.background = styles.settings.background;
+            document.querySelectorAll('.settings-option span').forEach(el => {el.style.color = styles.settings.color;});
+            document.querySelectorAll('select, input').forEach(el => {
+                el.style.background = styles.inputs.background;
+                el.style.color = styles.inputs.color;
+                el.style.borderColor = styles.inputs.borderColor;
+            });
+        });
+
+        // Navigation
+        let currentQuestion = 1;
+
+        function scrollToQuestion(num) {
+            const el = document.querySelector(`input[name="q${num}"], [data-name="q${num}"]`);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            currentQuestion = num;
+            DOM.questionButtons.forEach(item => {
+                item.classList.toggle('active', parseInt(item.dataset.ordernumber) === num);
+            });
+            DOM.prevBtn.disabled = num <= 1;
+            DOM.nextBtn.disabled = num >= 13;
+        }
+
+        DOM.questionButtons.forEach(item => {
+            item.addEventListener('click', () => {
+                scrollToQuestion(parseInt(item.dataset.ordernumber));
+            });
+        });
+
+        DOM.prevBtn.addEventListener('click', () => {
+            if (currentQuestion > 1) scrollToQuestion(currentQuestion - 1);
+        });
+
+        DOM.nextBtn.addEventListener('click', () => {
+            if (currentQuestion < 13) scrollToQuestion(currentQuestion + 1);
+        });
+
+        // Submit Functionality
+        let submitted = false;
+        const correctAnswers = {
+            q1: 'timetable',
+            q2: 'surface',
+            q3: 'accommodation',
+            q4: 'restaurant',
+            q5: 'region',
+            q6: 'numbers',
+            q7: 'TRUE',
+            q8: 'TRUE',
+            q9: 'NOT GIVEN',
+            q10: 'FALSE',
+            q11: 'NOT GIVEN',
+            q12: 'FALSE',
+            q13: 'NOT GIVEN'
+        };
+
+        DOM.submitBtn.addEventListener('click', submitTest);
+
+        function submitTest() {
+            if (submitted) return;
+            if (!confirm('Are you sure you want to submit?')) return;
+
+            submitted = true;
+            DOM.submitBtn.disabled = true;
+            DOM.submitBtn.textContent = 'Submitted';
+            let score = 0;
+            const results = {};
+
+            for (let i = 1; i <= 6; i++) {
+                const key = `q${i}`;
+                let userAnswer = '';
+                let isCorrect = false;
+                const inputEl = document.querySelector(`input[name="${key}"]`);
+                if (inputEl && inputEl.value.trim() !== '') {
+                    userAnswer = inputEl.value.trim().toLowerCase();
+                    isCorrect = userAnswer === correctAnswers[key].toLowerCase();
+                    inputEl.disabled = true;
+                }
+                if (isCorrect) score++;
+                results[key] = { userAnswer, correct: correctAnswers[key], isCorrect };
+            }
+
+            for (let i = 7; i <= 13; i++) {
+                const key = `q${i}`;
+                let userAnswer = '';
+                let isCorrect = false;
+                const select = document.querySelector(`select[name="${key}"]`);
+                if (select && select.value) {
+                    userAnswer = select.value;
+                    isCorrect = userAnswer === correctAnswers[key];
+                    select.disabled = true;
+                }
+                if (isCorrect) score++;
+                results[key] = { userAnswer, correct: correctAnswers[key], isCorrect };
+            }
+
+            DOM.scoreDisplay.textContent = `${score}/13`;
+            DOM.questionButtons.forEach(item => {
+                const i = item.dataset.ordernumber;
+                const res = results[`q${i}`];
+                if (res) {
+                    item.classList.remove('active', 'attempted');
+                    item.classList.add(res.isCorrect ? 'correct' : 'incorrect');
+                }
+            });
+            window.testResults = results;
+            DOM.resultsModal.style.display = 'flex';
+        }
+
+        function showCorrectAnswers() {
+            if (!submitted) return;
+            document.querySelectorAll('.answer-indicator').forEach(el => el.remove());
+
+            for (let i = 1; i <= 13; i++) {
+                const key = `q${i}`;
+                const res = window.testResults[key];
+                if (!res) continue;
+
+                let targetElement = null;
+                if (i <= 6) {
+                    targetElement = document.querySelector(`input[name="${key}"]`).parentNode;
+                } else {
+                    targetElement = document.querySelector(`[data-name="${key}"]`);
+                }
+
+                if (!targetElement) continue;
+
+                const div = document.createElement('div');
+                div.className = 'answer-indicator';
+                div.classList.add(res.isCorrect ? 'correct' : 'incorrect');
+                div.innerHTML = res.isCorrect
+                    ? `<i class="fas fa-check"></i> Correct! You chose: <strong>${res.userAnswer || 'No answer'}</strong>`
+                    : `<i class="fas fa-times"></i> Incorrect. You chose: <strong>${res.userAnswer || 'No answer'}</strong><br><strong>Correct:</strong> ${res.correct}`;
+                targetElement.appendChild(div);
+            }
+        }
+
+        DOM.closeModalBtn.addEventListener('click', () => {
+            DOM.resultsModal.style.display = 'none';
+        });
+
+        DOM.reviewBtn.addEventListener('click', () => {
+            DOM.resultsModal.style.display = 'none';
+            showCorrectAnswers();
+            scrollToQuestion(1);
+        });
+
+        // Initialize navigation
+        scrollToQuestion(1);
+    </script>
+</body>
+</html>
